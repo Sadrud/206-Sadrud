@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Plane.cpp"
+#include "Plane.hpp"
 
 int main () {
 	int *i = nullptr;

@@ -1,3 +1,4 @@
+#include <iostream>
 #ifndef PLANE_HPP
 #define PLANE_HPP
 
@@ -8,7 +9,7 @@ struct Point {
 	Point () {}
 	Point (double x, double y) : x_(x), y_(y) {}
 	~Point () {}
-	Point& operator== (const Point& rhs);
+	bool operator== (const Point& rhs) {if (x_ == rhs.x_ && y_ == rhs.y_) return true; return false; }
 };
 
 struct Node {
@@ -26,23 +27,23 @@ class Set_points {
 	Node* last_;
 
 public:
-	Set_point ();
-	Set_point (const Set_point& other);
-	~Set_point ();
+	Set_points ();
+	Set_points (const Set_points& other);
+	~Set_points ();
 	
 	Set_points& operator= (const Set_points& rhs);
 	bool& operator== (const Set_points& rhs);
 	bool& operator!= (const Set_points& rhs);
 	friend std::ostream& operator<< (std::ostream& os, const Set_points& list);
 	void p_delete (double x, double y);
-	void p_add (double (x, double y);
+	void p_add (double x, double y);
 	Set_points& operator| (const Set_points& rhs);
 	Set_points& operator& (const Set_points& rhs);
 	Set_points& operator- (const Set_points& rhs);
 	Set_points& operator|= (const Set_points& rhs);
 	Set_points& operator&= (const Set_points& rhs);
 	Set_points& operator-= (const Set_points& rhs);
-	void print_in_rectangle (/*4 прямые*/);
+	void print_in_rectangle (/*4 прямые*/) {}
 };
 
 
