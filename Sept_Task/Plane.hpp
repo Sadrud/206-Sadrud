@@ -1,4 +1,4 @@
-#include <iostream>
+#include "Exception.hpp"
 #ifndef PLANE_HPP
 #define PLANE_HPP
 
@@ -27,9 +27,6 @@ struct Node {
 
 	Node () : prev_(nullptr), next_(nullptr) {}
 	Node (Node* prev, Node* next, Point point) : prev_(prev), next_(next), point_(point) {}
-
-	Node* operator++ () { return next_; } //операция перемещения по узлам списка
-	Node* operator= (const Node* rhs) { point_ = rhs->point_; return this; }//операция присваивания для узлов списка
 };
 
 
@@ -61,40 +58,46 @@ class Set_points {
 
 
 Set_points::Set_points (const Set_points& other) {
-	for (Node* tmp = other.first_; tmp != nullptr; tmp++) {// проверить когда присваивается пустой список
+	for (Node* tmp = other.first_; tmp != nullptr; tmp = tmp->next_) {// проверить когда присваивается пустой список
 		if (tmp->prev_ == nullptr){
 			first_ = new Node;
-			first_ = tmp;
+			first_->point_ = tmp->point_;
 		} else {
 			Node* p = new Node;
-			p = tmp;
+			p->point_ = tmp->point_;
+			for (Node* ptr = first_; ptr != nullptr; ptr = ptr->next_) { p->prev_ = ptr; }
 			p->prev_->next_ = p;
-			p = nullptr;
 		}
 	}
 }
 
 Set_points::~Set_points () {
-	for (Node* tmp = first_->next_;; tmp++){
-		delete tmp->prev_;
-		tmp->prev_ = nullptr;
-		if (tmp->next_ == nullptr){
-			delete tmp;
-			break;
+	if (first_ != nullptr){
+		if (first_->next_ == nullptr)
+			delete first_;
+		else {
+			for (Node* tmp = first_->next_; tmp != nullptr; tmp = tmp->next_){
+				delete tmp->prev_;
+				first_ = tmp;
+			}
+			delete first_;
 		}
 	}
 }
 
 void Set_points::p_add (double x, double y) {
 	Point p(x, y);
+	for (Node* ptr = first_; ptr != nullptr; ptr = ptr->next_) { if (ptr->point_.x_ == x && ptr->point_.y_ == y) throw Exception (1, "Элемент уже есть в множествке."); }
+
 	Node* n = new Node;
-	n->next_ = first_;
-	first_->prev_ = n;
-	first_ = n;
+	if (first_ == nullptr) { first_ = n; }
+	else {
+		n->next_ = first_;
+		first_->prev_ = n;
+		first_ = n;
+	}
 	first_->point_ = p;
 }
-
-
 
 
 
