@@ -1,9 +1,9 @@
+#ifndef EXCEPTION_HPP
+#define EXCEPTION_HPP
+
 #include <iostream>
 #include <ostream>
 #include <string>
-
-#ifndef EXCEPTION_HPP
-#define EXCEPTION_HPP
 
 class Exception {
 	private:
