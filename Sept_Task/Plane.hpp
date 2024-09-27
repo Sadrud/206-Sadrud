@@ -26,9 +26,28 @@ struct Node {
 	Node (Node* prev, Node* next, Point point) : prev_(prev), next_(next), point_(point) {}
 };
 
+//класс прямоугольник, чтобы опрделять точки внутри прмоугольника
+class Rectangle {
+	Point p1_, p2_, p3_, p4_;
+
+	public:
+	Rectangle (Point p1, Point p2, Point p3, Point p4) : p1_(p1), p2_(p2), p3_(p3), p4_(p4) {}
+	~Rectangle () {}
+
+	bool is_rectangle () const;
+	bool is_point_in_rectangle(const Point& point);
+
+	//дополнительные методы
+	double distance (const Point& p1, const Point& p2) const;
+	double scalar_product (const Point& p1, const Point& p2, const Point& p3, const Point& p4) const;
+	double cross_product (const Point& p1, const Point& p2, const Point& p3, const Point& p4) const;
+	double max_distance ();
+	void order ();
+};
 
 class Set_points {
 	Node* first_;
+	friend class Rectangle;
 
 	public:
 	Set_points () { first_ = nullptr; }
@@ -47,7 +66,7 @@ class Set_points {
 	Set_points operator|= (const Set_points& rhs);
 	Set_points operator&= (const Set_points& rhs);
 	Set_points operator-= (const Set_points& rhs);
-	void print_in_rectangle (/*4 прямые*/);
+	void print_in_rectangle (Rectangle& rect);
 
 	//дополнительные методы
 	bool contains(const Point& point) const;

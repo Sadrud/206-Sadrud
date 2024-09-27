@@ -145,5 +145,8 @@ int main () {
 	
 	a -= empty;
 
+	Rectangle rect(Point(-10, 0), Point(0, -10), Point(10, 0), Point(0, 10));
+	big_3.print_in_rectangle(rect);
+
 	return 0;
 }
