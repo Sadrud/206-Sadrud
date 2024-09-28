@@ -60,6 +60,7 @@ class Set_points {
 	friend std::ostream& operator<< (std::ostream& os, const Set_points& list);
 	void p_delete (double x, double y);
 	void p_add (double x, double y);
+	Set_points operator() (double x, double y);
 	Set_points operator| (const Set_points& rhs);
 	Set_points operator& (const Set_points& rhs);
 	Set_points operator- (const Set_points& rhs);

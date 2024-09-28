@@ -270,4 +270,9 @@ void Set_points::print_in_rectangle(Rectangle& rect) {
 	std::cout << std::endl;
 } 
 
+Set_points Set_points::operator() (double x, double y) {
+	p_add(x, y);
+	return *this;
+}
+
 #endif

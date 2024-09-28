@@ -10,6 +10,9 @@ int main () {
 	try { a.p_delete(1, 0); }
 	catch (Exception ex){ ex.print_message(); }
 
+	a(100, 200);
+	a.p_delete(100, 200);
+
 	a.p_add(0, 0);
 	std::cout << "Вывод множества A (добавдение элемента (0, 0)): " << a;
 	a.p_delete(0,0);
