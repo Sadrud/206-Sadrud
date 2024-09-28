@@ -145,8 +145,30 @@ int main () {
 	
 	a -= empty;
 
-	Rectangle rect(Point(-10, 0), Point(0, -10), Point(10, 0), Point(0, 10));
-	big_3.print_in_rectangle(rect);
+	Rectangle rect(Point(-10, 0), Point(10, 0), Point(0,-10), Point(0, 10));
+	try { big_3.print_in_rectangle(rect); }
+	catch (Exception ex){ ex.print_message(); }
+
+	std::cout << std::endl;
+
+	Rectangle Rect(Point(-100, 0), Point(0, -100), Point(100, 0), Point(0, 100));
+	big_3.print_in_rectangle(Rect);
+	std::cout << std::endl;
+
+	std::cout << big_3;
+	std::cout << std::endl;
+
+	Rectangle REct(Point(-1, -1), Point(-3, -1), Point(-3, -2), Point(-1, -2));
+	big_3.print_in_rectangle(REct);
+	std::cout << std::endl;
+
+	Rectangle RECt(Point(-1, -1), Point(-100, -200), Point(-3, -2), Point(-1, -10));
+	try { big_3.print_in_rectangle(RECt); }
+	catch (Exception ex){ ex.print_message(); }
+
+	Rectangle RECT(Point(-1, -1), Point(-100, -200), Point(-1, -1), Point(-1, -10));
+	try { big_3.print_in_rectangle(RECT); }
+	catch (Exception ex){ ex.print_message(); }
 
 	return 0;
 }

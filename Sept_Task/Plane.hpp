@@ -34,7 +34,7 @@ class Rectangle {
 	Rectangle (Point p1, Point p2, Point p3, Point p4) : p1_(p1), p2_(p2), p3_(p3), p4_(p4) {}
 	~Rectangle () {}
 
-	bool is_rectangle () const;
+	bool is_rectangle ();
 	bool is_point_in_rectangle(const Point& point);
 
 	//дополнительные методы

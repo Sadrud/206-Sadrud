@@ -209,7 +209,9 @@ double Rectangle::scalar_product (const Point& p1, const Point& p2, const Point&
 double Rectangle::cross_product (const Point& p1, const Point& p2, const Point& p3, const Point& p4) const { return ((p2.x_ - p1.x_)*(p4.y_ - p3.y_) - (p4.x_ - p3.x_)*(p2.y_ - p1.y_)); }
 
 //проверка на прямоугольник
-bool Rectangle::is_rectangle () const {
+bool Rectangle::is_rectangle () {
+	if (p1_ == p2_ || p1_ == p3_ || p1_ == p4_ || p2_ == p3_ || p2_ == p4_ || p4_ == p3_) { return false; }
+
 	if (scalar_product(p1_, p2_, p1_, p3_) == 0 && scalar_product(p4_, p2_, p4_, p3_) == 0) {
 		if (distance(p1_, p2_) == distance(p3_, p4_) && distance(p1_, p3_) == distance(p2_, p4_)) return true;
 	}
@@ -219,7 +221,7 @@ bool Rectangle::is_rectangle () const {
 		}
 	}
 	if (scalar_product(p1_, p2_, p1_, p3_) != 0 && scalar_product(p1_, p2_, p1_, p4_) != 0) {
-		if (scalar_product(p1_, p3_, p1_, p4_) == 0 && scalar_product(p2_, p3_, p2_, p4_) != 0) {
+		if (scalar_product(p1_, p3_, p1_, p4_) == 0 && scalar_product(p2_, p3_, p2_, p4_) == 0) {
 			if (distance(p1_, p3_) == distance(p2_, p4_) && distance(p2_, p3_) == distance(p1_, p4_)) return true;
 		}
 	}
@@ -248,16 +250,23 @@ bool Rectangle::is_point_in_rectangle(const Point& point){
 	double cross3 = cross_product(point, p3_, point, p4_);
 	double cross4 = cross_product(point, p4_, point, p1_);
 
-	return (cross1 > 0 && cross2 > 0 && cross3 > 0 && cross4 > 0) || (cross1 < 0 && cross2 < 0 && cross3 < 0 && cross4 < 0);
+	return (cross1 >= 0 && cross2 >= 0 && cross3 >= 0 && cross4 >= 0) || (cross1 <= 0 && cross2 <= 0 && cross3 <= 0 && cross4 <= 0);
 }
 
 //опять множество точек
 // вывод точек находящихся внутри прямоугольника
 void Set_points::print_in_rectangle(Rectangle& rect) {
+	int i = 0;
+	std::cout << "Точки, находящиеся внутри прямоугольника: " << std::endl;
 	for (Node* ptr = first_; ptr != nullptr; ptr = ptr->next_){
-		if (rect.is_point_in_rectangle(ptr->point_))
+		if (rect.is_point_in_rectangle(ptr->point_)) {
 			std::cout << "(" << ptr->point_.x_ << "," << ptr->point_.y_ << ") ";
+			i++;
+		}
 	}
+	
+	if (i == 0) { std::cout << "В прямоугольнике ничего не лежит."; }
+
 	std::cout << std::endl;
 } 
 
