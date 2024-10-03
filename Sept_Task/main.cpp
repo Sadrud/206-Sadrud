@@ -13,14 +13,14 @@ int main () {
 	a(100, 200);
 	a.p_delete(100, 200);
 
-	a.p_add(0, 0);
+	a(0, 0);
 	std::cout << "Вывод множества A (добавдение элемента (0, 0)): " << a;
 	a.p_delete(0,0);
 	std::cout << "Вывод множества A (удаление элемента (0, 0)): "<< a << std::endl;
 
-	a.p_add(12, 124);
-	a.p_add(34, 32);
-	a.p_add(154, 65);
+	a(12, 124);
+	a(34, 32);
+	a(154, 65);
 	std::cout << "Добавление элементов (12, 124), (34, 32), (154, 65) в A: " << a << std::endl;
 
 	a.p_delete(34,32);
@@ -31,14 +31,14 @@ int main () {
 	try { a.p_delete(1, 0); }
 	catch (Exception ex){ ex.print_message(); }
 
-	try { a.p_add(0, 0); }
+	try { a(0, 0); }
 	catch (Exception ex){ ex.print_message(); }
 
 	Set_points b = a;
 	std::cout << "A: " << a;
 	std::cout << "B: " << b << std::endl;
 
-	try { b.p_add(154, 65); }
+	try { b(154, 65); }
 	catch (Exception ex){ ex.print_message(); }
 
 	b.p_delete(154, 65);
@@ -47,10 +47,10 @@ int main () {
 	std::cout << "Удаление элемента (0, 0) из B: " << b << std::endl;
 
 	Set_points c;
-	c.p_add(23, 43);
-	c.p_add(50, 50);
-	c.p_add(0, 0);
-	c.p_add(50, 51);
+	c(23, 43);
+	c(50, 50);
+	c(0, 0);
+	c(50, 51);
 	std::cout << "Сравнение множеств A и C: " << std::endl << "A: " << a << "C: " << c << std::endl;
 
 	c = a;
@@ -78,10 +78,10 @@ int main () {
 
 
 	Set_points d;
-	d.p_add(100, 300);
+	d(100, 300);
 	Set_points e;
-	e.p_add(100, 300);
-	e.p_add(1000, 3000);
+	e(100, 300);
+	e(1000, 3000);
 
 	if (d == e) { std::cout << "D = E" << std::endl; }
 	else { std::cout << "D != E" << std::endl; }
@@ -94,9 +94,9 @@ int main () {
 	Set_points big_1;
 	Set_points big_2;
 	if (big_1 == big_2) { std::cout << "Равенство пустых множеств." << std::endl; }
-	for (int i = 0; i < 100; i++) {	big_1.p_add(std::sqrt(i), i*(i/2)); }
-	for (int i = 0; i < 99; i++) { big_2.p_add(std::sqrt(i), i*(i/2)); }
-	big_2.p_add(-100, -200);
+	for (int i = 0; i < 100; i++) {	big_1(std::sqrt(i), i*(i/2)); }
+	for (int i = 0; i < 99; i++) { big_2(std::sqrt(i), i*(i/2)); }
+	big_2(-100, -200);
 
 	if (big_1 != big_2) { std::cout << "Два больших множества не совпали." << std::endl; }
 	else { std::cout << "Два больших множества совпали." << std::endl; }

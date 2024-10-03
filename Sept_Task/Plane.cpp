@@ -35,7 +35,7 @@ Set_points::~Set_points () {
 }
 
 //добавление одной точки в множество
-void Set_points::p_add (double x, double y) {
+void Set_points::operator() (double x, double y) {
 	Point p(x, y);
 	for (Node* ptr = first_; ptr != nullptr; ptr = ptr->next_) { if (ptr->point_.x_ == x && ptr->point_.y_ == y) throw Exception (1, "Добавление элемента. Элемент уже есть в множестве."); }
 
@@ -129,9 +129,7 @@ bool Set_points::operator!= (const Set_points& rhs) const { return !(*this == rh
 //проверка на содержание элемента в множестве
 bool Set_points::contains(const Point& point) const {
 	for (Node* current = first_; current != nullptr; current = current->next_) {
-		if (current->point_.x_ == point.x_ && current->point_.y_ == point.y_) {
-			return true;
-		}
+		if (current->point_.x_ == point.x_ && current->point_.y_ == point.y_) { return true; }
 	}
 	return false;
 }
@@ -145,7 +143,7 @@ Set_points Set_points::operator| (const Set_points& rhs) {
 
 	if (first_ == nullptr) {
 		for (Node* current = rhs.first_; current != nullptr; current = current->next_) {
-			result.p_add(current->point_.x_, current->point_.y_);
+			result(current->point_.x_, current->point_.y_);
 		}
 		return result;
 	}
@@ -153,11 +151,11 @@ Set_points Set_points::operator| (const Set_points& rhs) {
 	if (rhs.first_ == nullptr) { return *this; }
 
 	for (Node* current = first_; current != nullptr; current = current->next_) {
-		result.p_add(current->point_.x_, current->point_.y_);
+		result(current->point_.x_, current->point_.y_);
 	}
 
 	for (Node* current = rhs.first_; current != nullptr; current = current->next_) {
-		if (!this->contains(current->point_)) { result.p_add(current->point_.x_, current->point_.y_); }
+		if (!this->contains(current->point_)) { result(current->point_.x_, current->point_.y_); }
 	}
 	return result;
 }
@@ -169,7 +167,7 @@ Set_points Set_points::operator& (const Set_points& rhs) {
 	if (first_ == nullptr || rhs.first_ == nullptr) { return result; }
 
 	for (Node* current = this->first_; current != nullptr; current = current->next_) {
-		if (rhs.contains(current->point_)) { result.p_add(current->point_.x_, current->point_.y_); }
+		if (rhs.contains(current->point_)) { result(current->point_.x_, current->point_.y_); }
 	}
 	return result;
 }
@@ -185,7 +183,7 @@ Set_points Set_points::operator- (const Set_points& rhs) {
 	if (rhs.first_ == nullptr) { return *this; }
 
 	for (Node* current = this->first_; current != nullptr; current = current->next_) {
-		if (!rhs.contains(current->point_)) { result.p_add(current->point_.x_, current->point_.y_); }
+		if (!rhs.contains(current->point_)) { result(current->point_.x_, current->point_.y_); }
 	}
 	return result;
 }
@@ -269,10 +267,5 @@ void Set_points::print_in_rectangle(Rectangle& rect) {
 
 	std::cout << std::endl;
 } 
-
-Set_points Set_points::operator() (double x, double y) {
-	p_add(x, y);
-	return *this;
-}
 
 #endif
