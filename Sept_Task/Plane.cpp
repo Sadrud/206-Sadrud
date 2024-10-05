@@ -37,7 +37,7 @@ Set_points::~Set_points () {
 //добавление одной точки в множество
 void Set_points::operator() (double x, double y) {
 	Point p(x, y);
-	for (Node* ptr = first_; ptr != nullptr; ptr = ptr->next_) { if (ptr->point_.x_ == x && ptr->point_.y_ == y) throw Exception (1, "Добавление элемента. Элемент уже есть в множестве."); }
+	for (Node* ptr = first_; ptr != nullptr; ptr = ptr->next_) { if (abs(ptr->point_.x_, x) <= eps && abs(ptr->point_.y_, y) <= eps) throw Exception (1, "Добавление элемента. Элемент уже есть в множестве."); }
 
 	Node* n = new Node;
 	if (first_ == nullptr) { first_ = n; }
@@ -64,7 +64,7 @@ std::ostream& operator<< (std::ostream& os, const Set_points& set) {
 void Set_points::p_delete (double x, double y) {
 	if (first_ == nullptr) { throw Exception (3, "Удаление элемента. Множество пусто."); }
 	for (Node* ptr = first_; ptr != nullptr; ptr = ptr->next_) { 
-		if (ptr->point_.x_ == x && ptr->point_.y_ == y) {
+		if (abs(ptr->point_.x_, x) <= eps && abs(ptr->point_.y_, y) <= eps) {
 			if (ptr->prev_ == nullptr && ptr->next_ == nullptr) { delete ptr; first_ = nullptr; break; }
 			if (ptr->prev_ == nullptr) { ptr->next_->prev_ = nullptr; first_ = ptr->next_; delete ptr; break; }
 			if (ptr->next_ == nullptr) { ptr->prev_->next_ = nullptr; delete ptr; break; }
@@ -115,7 +115,7 @@ bool Set_points::operator== (const Set_points& rhs) const {
 
 	for (Node* ptr = first_; ptr != nullptr; ptr = ptr->next_) {
 		for (Node* tmp = rhs.first_; tmp != nullptr; tmp = tmp->next_) {
-			if (tmp->point_.x_ == ptr->point_.x_ && tmp->point_.y_ == ptr->point_.y_) 
+			if (abs(tmp->point_.x_, ptr->point_.x_) <= eps && abs(tmp->point_.y_, ptr->point_.y_) <= eps) 
 				break;
 			if (tmp->next_ == nullptr)
 				return false;
@@ -129,7 +129,7 @@ bool Set_points::operator!= (const Set_points& rhs) const { return !(*this == rh
 //проверка на содержание элемента в множестве
 bool Set_points::contains(const Point& point) const {
 	for (Node* current = first_; current != nullptr; current = current->next_) {
-		if (current->point_.x_ == point.x_ && current->point_.y_ == point.y_) { return true; }
+		if (abs(current->point_.x_, point.x_) <= eps && abs(current->point_.y_, point.y_) <= eps) { return true; }
 	}
 	return false;
 }
@@ -208,19 +208,19 @@ double Rectangle::cross_product (const Point& p1, const Point& p2, const Point& 
 
 //проверка на прямоугольник
 bool Rectangle::is_rectangle () {
-	if (p1_ == p2_ || p1_ == p3_ || p1_ == p4_ || p2_ == p3_ || p2_ == p4_ || p4_ == p3_) { return false; }
+	if (p1_ == p2_ || p1_ == p3_ || p1_ == p4_ || p2_== p3_ || p2_== p4_ || p4_ == p3_) { return false; }
 
-	if (scalar_product(p1_, p2_, p1_, p3_) == 0 && scalar_product(p4_, p2_, p4_, p3_) == 0) {
-		if (distance(p1_, p2_) == distance(p3_, p4_) && distance(p1_, p3_) == distance(p2_, p4_)) return true;
+	if (abs(scalar_product(p1_, p2_, p1_, p3_), 0) <= eps && abs(scalar_product(p4_, p2_, p4_, p3_), 0) <= eps) {
+		if (abs(distance(p1_, p2_), distance(p3_, p4_)) <= eps && abs(distance(p1_, p3_), distance(p2_, p4_)) <= eps) return true;
 	}
-	if (scalar_product(p1_, p2_, p1_, p3_) != 0) {
-		if (scalar_product(p1_, p2_, p1_, p4_) == 0 && scalar_product(p3_, p2_, p3_, p4_) == 0) {
-			if (scalar_product(p1_, p2_, p1_, p4_) == 0 && scalar_product(p3_, p2_, p3_, p4_) == 0) return true;
+	if (abs(scalar_product(p1_, p2_, p1_, p3_), 0) > eps) {
+		if (abs(scalar_product(p1_, p2_, p1_, p4_), 0) <= eps && abs(scalar_product(p3_, p2_, p3_, p4_), 0) <= eps) {
+			if (abs(scalar_product(p1_, p2_, p1_, p4_), 0) <= eps && abs(scalar_product(p3_, p2_, p3_, p4_), 0) <= eps) return true;
 		}
 	}
-	if (scalar_product(p1_, p2_, p1_, p3_) != 0 && scalar_product(p1_, p2_, p1_, p4_) != 0) {
-		if (scalar_product(p1_, p3_, p1_, p4_) == 0 && scalar_product(p2_, p3_, p2_, p4_) == 0) {
-			if (distance(p1_, p3_) == distance(p2_, p4_) && distance(p2_, p3_) == distance(p1_, p4_)) return true;
+	if (abs(scalar_product(p1_, p2_, p1_, p3_), 0) > eps && abs(scalar_product(p1_, p2_, p1_, p4_), 0) > eps) {
+		if (abs(scalar_product(p1_, p3_, p1_, p4_), 0) <= eps && abs(scalar_product(p2_, p3_, p2_, p4_), 0) <= eps) {
+			if (abs(distance(p1_, p3_), distance(p2_, p4_)) <= eps && abs(distance(p2_, p3_), distance(p1_, p4_)) <= eps) return true;
 		}
 	}
 	return false;
@@ -234,8 +234,8 @@ double Rectangle::max_distance () {
 
 void Rectangle::order () {
 	Point t = p1_;
-	if (distance(p1_, p2_) == max_distance ()) { t = p2_; p2_ = p3_; p3_ = t; }
-	if (distance(p2_, p3_) == max_distance ()) { t = p3_; p3_ = p4_; p4_ = t; }
+	if (abs(distance(p1_, p2_), max_distance ()) <= eps) { t = p2_; p2_ = p3_; p3_ = t; }
+	if (abs(distance(p2_, p3_), max_distance ()) <= eps) { t = p3_; p3_ = p4_; p4_ = t; }
 }
 
 //наличие точки в прямоугольнике

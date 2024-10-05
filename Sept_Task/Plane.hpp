@@ -2,15 +2,22 @@
 #ifndef PLANE_HPP
 #define PLANE_HPP
 
+static double eps = 0.0000000001;
+static double abs (double x, double y) {
+	if (x - y >= 0)
+		return x-y;
+	return y-x;
+}
+
 //тип точка плоскости
 struct Point {
 	double x_, y_;
 
 	Point () {}
 	Point (double x, double y) : x_(x), y_(y) {}
-	Point (const Point& rhs) { x_ = rhs.x_; y_ = rhs.y_; }
+	Point (const Point& rhs) { x_ = rhs.x_; y_= rhs.y_; }
 	~Point () {}
-	bool operator== (const Point& rhs) {if (x_ == rhs.x_ && y_ == rhs.y_) return true; return false; }
+	bool operator== (const Point& rhs) {if (abs(x_, rhs.x_) <= eps && abs(y_, rhs.y_) <= eps) return true; return false; }
 	Point& operator= (const Point& rhs) {if (this != &rhs) { x_ = rhs.x_; y_ = rhs.y_; } return *this; }
 };
 
