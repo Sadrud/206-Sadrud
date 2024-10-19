@@ -1,5 +1,5 @@
 CC = g++ -Wall -Wextra -Werror
-SOURCES = Limits.hpp GCD_HCF.hpp main.cpp GCD_HCF.cpp Exception.hpp
+SOURCES = Limits.hpp GCD_LCM.hpp main.cpp GCD_LCM.cpp Exception.hpp
 EXECUTABLE = MyProject
 CFLAGS = -c
 OBJECTS = $(SOURCES:.cpp = .o)
