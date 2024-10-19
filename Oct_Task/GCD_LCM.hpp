@@ -12,6 +12,8 @@ class Value {
 		virtual Value& operator*=(const Value& other) = 0;
 		virtual Value& operator/=(const Value& other) = 0;
 
+		virtual Value& operator%=(const Value& other) = 0;
+
 		virtual ~Value() {}
 };
 
@@ -28,6 +30,8 @@ class Int : public Value {
 	Value& operator-=(const Value& other) override;
 	Value& operator*=(const Value& other) override;
 	Value& operator/=(const Value& other) override;
+
+	Value& operator%=(const Value& other) override;
 };
 
 class Long : public Value {
@@ -43,6 +47,8 @@ class Long : public Value {
 	Value& operator-=(const Value& other) override;
 	Value& operator*=(const Value& other) override;
 	Value& operator/=(const Value& other) override;
+
+	Value& operator%=(const Value& other) override;
 };
 
 void GCD(Value& a, Value& b, Value& result);

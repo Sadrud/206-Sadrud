@@ -7,10 +7,11 @@ int main() {
 
 		try {
 			GCD(a, b, gcdResult);
-			std::cout << "GCD (Int): " << dynamic_cast<Int&>(gcdResult).getValue() << std::endl;
+			//std::cout << "GCD (Int): " << dynamic_cast<Int&>(gcdResult).getValue() << std::endl;
 		} catch (const std::exception& e) {
 			std::cerr << "Ошибка в GCD (Int): " << e.what() << std::endl;
 		}
+
 
 		try {
 			LCM(a, b, lcmResult);

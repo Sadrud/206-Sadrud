@@ -38,6 +38,15 @@ Value& Int::operator/=(const Value& other) {
 	return *this;
 }
 
+Value& Int::operator%=(const Value& other) {
+	const Int& otherInt = dynamic_cast<const Int&>(other);
+        if (otherInt.value == 0) {
+                throw std::invalid_argument("Деление на ноль");
+        }
+        value %= otherInt.value;
+        return *this;
+}
+
 Value& Long::operator+=(const Value& other) {
 	const Long& otherLong = dynamic_cast<const Long&>(other);
 	if ((otherLong.value > 0 && value > std::numeric_limits<long>::max() - otherLong.value) || (otherLong.value < 0 && value < std::numeric_limits<long>::min() - otherLong.value)) {
@@ -74,14 +83,23 @@ Value& Long::operator/=(const Value& other) {
 	return *this;
 }
 
+Value& Long::operator%=(const Value& other) {
+	const Long& otherLong = dynamic_cast<const Long&>(other);
+	if (otherLong.value == 0) {
+		throw std::invalid_argument("Деление на ноль");
+	}
+	value %= otherLong.value;
+	return *this;
+}
+
 void GCD(Value& a, Value& b, Value& result) {
 	Value* zero = a.CreateZeroValue();
-	while (b.getValue() != 0) {
-		Value* temp = b.Duplicate();
+
+	while (dynamic_cast<Long&>(b).getValue() != 0) {
+		Value* tem = b.Duplicate();
 		b = a;
-		while ((a.getValue() > 0 && b.getValue() > 0) || (a.getValue() < 0 && b.getValue() < 0)) { a -= *temp; }
-		//a += *temp;
-		delete temp;
+		a %= *tem;
+		delete tem;
 	}
 	result = a;
 	delete zero;
