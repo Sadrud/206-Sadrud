@@ -75,7 +75,16 @@ Value& Long::operator/=(const Value& other) {
 }
 
 void GCD(Value& a, Value& b, Value& result) {
-	
+	Value* zero = a.CreateZeroValue();
+	while (b.getValue() != 0) {
+		Value* temp = b.Duplicate();
+		b = a;
+		while ((a.getValue() > 0 && b.getValue() > 0) || (a.getValue() < 0 && b.getValue() < 0)) { a -= *temp; }
+		//a += *temp;
+		delete temp;
+	}
+	result = a;
+	delete zero;
 }
 
 void LCM(Value& a, Value& b, Value& result) {
