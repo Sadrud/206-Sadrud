@@ -94,15 +94,22 @@ Value& Long::operator%=(const Value& other) {
 
 void GCD(Value& a, Value& b, Value& result) {
 	Value* zero = a.CreateZeroValue();
+	Value* tmpA = a.Duplicate();
+	Value* tmpB = b.Duplicate();
 
-	while (dynamic_cast<Long&>(b).getValue() != 0) {
-		Value* tem = b.Duplicate();
-		b = a;
-		a %= *tem;
-		delete tem;
+	while (dynamic_cast<Int*>(tmpB)->getValue() != 0) {
+		std::cout << dynamic_cast<Int*>(tmpB)->getValue() << std::endl;
+		Value* tmp = tmpB->Duplicate();
+		*tmpB = *tmpA;
+		*tmpA %= *tmp;
+		delete tmp;
 	}
-	result = a;
+
+	result = *tmpA;
+
 	delete zero;
+	delete tmpA;
+	delete tmpB;
 }
 
 void LCM(Value& a, Value& b, Value& result) {
@@ -111,7 +118,8 @@ void LCM(Value& a, Value& b, Value& result) {
 
 	Value* multResult = a.Duplicate();
 	*multResult *= b;
-	result = *multResult /= *gcdValue;
+	*multResult /= *gcdValue;
+	result = *multResult;
 
 	delete gcdValue;
 	delete multResult;
