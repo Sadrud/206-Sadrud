@@ -3,7 +3,7 @@
 
 int main() {
 	try {
-		Int a(15), b(20), gcdResult, lcmResult;
+		Int a(17), b(20), gcdResult, lcmResult;
 
 		try {
 			GCD(a, b, gcdResult);
@@ -20,7 +20,7 @@ int main() {
 			std::cerr << "Ошибка в LCM (Int): " << e.what() << std::endl;
 		}
 
-		Long c(15), d(20), gcdLongResult, lcmLongResult;
+		Long c(31), d(20), gcdLongResult, lcmLongResult;
 
 		try {
 			GCD(c, d, gcdLongResult);
