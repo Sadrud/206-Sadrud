@@ -1,6 +1,8 @@
-#include "Limits.hpp"
 #include "GCD_LCM.hpp"
 #include <stdexcept>
+
+#ifndef GCD_CPP
+#define GCD_CPP
 
 Value& Int::operator+=(const Value& other) {
 	const Int& otherInt = dynamic_cast<const Int&>(other);
@@ -148,3 +150,5 @@ void LCM(Value& a, Value& b, Value& result) {
 	delete gcdValue;
 	delete multResult;
 }
+
+#endif

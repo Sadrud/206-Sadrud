@@ -1,7 +1,15 @@
 #include <iostream>
 #include "GCD_LCM.hpp"
+#include "Limits.hpp"
 
 int main() {
+	try {
+		Int a(maxIntVal - 1), b(20000);
+		a += b;
+	} catch (const std::exception& e) {
+		std::cerr << "Ошибка в GCD (Int): " << e.what() << std::endl;
+	}
+
 	try {
 		Int a(17), b(20), gcdResult, lcmResult;
 

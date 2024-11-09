@@ -1,6 +1,9 @@
 #include <iostream>
-#include "Exception.hpp"
 #include <stdexcept>
+#include "Limits.hpp"
+
+#ifndef GCD_LCM_HPP
+#define GCD_LCM_HPP
 
 class Value {
 	public:
@@ -59,3 +62,5 @@ class Long : public Value {
 
 void GCD(Value& a, Value& b, Value& result);
 void LCM(Value& a, Value& b, Value& result);
+
+#endif
