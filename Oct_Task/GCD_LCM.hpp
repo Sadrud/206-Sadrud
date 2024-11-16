@@ -3,9 +3,15 @@
 
 #include <iostream>
 #include <stdexcept>
+#include <limits>
 
 class Value {
 	public:
+		int minIntVal = std::numeric_limits<int>::lowest();
+		int maxIntVal = std::numeric_limits<int>::max();
+		long minLongVal = std::numeric_limits<long>::lowest();
+		long maxLongVal = std::numeric_limits<long>::max();
+		
 		virtual Value* CreateZeroValue() const = 0;
 		virtual Value* Duplicate() const = 0;
 

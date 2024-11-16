@@ -1,6 +1,10 @@
 #include <iostream>
-#include "Limits.hpp"
 #include "GCD_LCM.hpp"
+
+int minIntVal = std::numeric_limits<int>::lowest();
+int maxIntVal = std::numeric_limits<int>::max();
+long minLongVal = std::numeric_limits<long>::lowest();
+long maxLongVal = std::numeric_limits<long>::max();
 
 int main() {
 	try {

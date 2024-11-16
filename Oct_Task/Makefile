@@ -1,7 +1,7 @@
-CC = g++ 
-SOURCES = main.cpp GCD_LCM.hpp GCD_LCM.cpp Limits.hpp
+CC = g++ -Wall
+SOURCES = main.cpp GCD_LCM.hpp GCD_LCM.cpp
 EXECUTABLE = MyProject
-CFLAGS = -c
+CFLAGS = -c -Wall
 OBJECTS = $(SOURCES:.cpp = .o)
 
 Myproject : $(SOURCES)
