@@ -1,9 +1,8 @@
-#include <iostream>
-#include <stdexcept>
-#include "Limits.hpp"
-
 #ifndef GCD_LCM_HPP
 #define GCD_LCM_HPP
+
+#include <iostream>
+#include <stdexcept>
 
 class Value {
 	public:

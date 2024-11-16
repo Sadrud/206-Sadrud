@@ -1,8 +1,9 @@
-#include "GCD_LCM.hpp"
-#include <stdexcept>
-
 #ifndef GCD_CPP
 #define GCD_CPP
+
+#include "GCD_LCM.hpp"
+#include "Limits.hpp"
+#include <stdexcept>
 
 Value& Int::operator+=(const Value& other) {
 	const Int& otherInt = dynamic_cast<const Int&>(other);

@@ -9,4 +9,3 @@ Myproject : $(SOURCES)
 
 cpp.o : .o
 	$(CC) $(CFLAGS) $< -o $@
-	~                                       

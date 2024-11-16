@@ -1,6 +1,6 @@
 #include <iostream>
-#include "GCD_LCM.hpp"
 #include "Limits.hpp"
+#include "GCD_LCM.hpp"
 
 int main() {
 	try {
@@ -28,7 +28,7 @@ int main() {
 			std::cerr << "Ошибка в LCM (Int): " << e.what() << std::endl;
 		}
 
-		Long c(31), d(20), gcdLongResult, lcmLongResult;
+		Long c(32), d(20), gcdLongResult, lcmLongResult;
 
 		try {
 			GCD(c, d, gcdLongResult);
