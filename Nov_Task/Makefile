@@ -1,4 +1,4 @@
-CC = g++ -Wall
+CC = g++ -Wall -Werror -Wextra
 SOURCES = main.cpp List.hpp List.cpp
 EXECUTABLE = MyProject
 CFLAGS = -c 

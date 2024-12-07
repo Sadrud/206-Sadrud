@@ -22,15 +22,11 @@ class List {
 	List () : first(nullptr) {}
 	~List ();
 
-	void opearator() (int value);
-	friend std::ostream& operator<< (std::ostream& os, ListNode* node)
+	void operator() (int value);
+	friend std::ostream& operator<< (std::ostream& os, List& List);
 
-	int len (ListNode* head);
-	bool Process_N (ListNode* head);
-	void Center (ListNode* node, ListNode* next, bool* eq, int* num);
+	bool Process ();
 
-	bool Process (ListNode* head);
-
-}
+};
 
 #endif

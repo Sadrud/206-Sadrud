@@ -4,57 +4,37 @@
 #include "List.hpp"
 
 List::~List () {
-	Node* currentNode = first;
+	ListNode* currentNode = first;
 	while (currentNode) {
-		Node* nextNode = currentNode->next;
+		ListNode* nextNode = currentNode->next;
 		delete currentNode;
 		currentNode = nextNode;
 	}
 }
 
-int List::len (ListNode* head) {
-	int n = 0;
-	for (ListNode* node = head; node != nullptr; node = node->next) n++;
-	return n;
-}
-
-void List::Center (ListNode* node, ListNode* next, bool* eq, int* index, int* num) {
-	if (*index != *num/2) {
-		(*index)++;
-		node = next;
-		next = next->next;
-		Center(node, next, eq, index, num);
+void List::operator() (int value) {
+	ListNode* p = new ListNode (value);
+	if (!first) { first = p; }
+	else {
+		ListNode* last = first;
+		while (last->next != nullptr) {	last = last->next; }
+		last->next = p;
 	}
-
-	if (*eq == false) return;
-
-	if (node == next) { *eq = true; next = next->next; }
 }
 
-bool List::Process_N (ListNode* head) {
-	ListNode* node = head;
-	int n = len(node);
+bool List::Process () {
+	//если список пуст или содержит один элемент, то он по определению считается палиндромным
+	if (!first || !first->next) return true;
 
-	int zero = 0;
-	int* index = &zero;
-	bool qu = true;
-	bool* eq = &qu;
-	ListNode* next = node->next;
-
-	stCenter (node, next, eq, index, &n);
-	return *eq;
-}
-
-bool List::Process (ListNode* head) {
-	if (!head || !head->next) return true;
-
-	ListNode* slow = head;
-	ListNode* fast = head;
+	//переход к середине списка
+	ListNode* slow = first;
+	ListNode* fast = first;
 	while (fast && fast->next) {
 		slow = slow->next;
 		fast = fast->next->next;
 	}
 
+	//переворачивание второй половины списка
 	ListNode* prev = nullptr;
 	ListNode* curr = slow;
 	while (curr) {
@@ -64,7 +44,8 @@ bool List::Process (ListNode* head) {
 		curr = nextNode;
 	}
 
-	ListNode* firstHalf = head;
+	//сравнение первой и второй половин
+	ListNode* firstHalf = first;
 	ListNode* secondHalf = prev;
 	bool isPalindrome = true;
 
@@ -77,6 +58,7 @@ bool List::Process (ListNode* head) {
 		secondHalf = secondHalf->next;
 	}
 
+	//восстановление списка
 	curr = prev;
 	prev = nullptr;
 	while (curr) {
@@ -89,10 +71,11 @@ bool List::Process (ListNode* head) {
 	return isPalindrome;
 }
 
-std::ostream& operator<< (std::ostream& os, ListNode* node) {
-	if (node == nullptr) { os << "Список пустой." << std::endl; return os; }
+//печать
+std::ostream& operator<< (std::ostream& os, List& list) {
+	if (list.first == nullptr) { os << "Список пустой." << std::endl; return os; }
 
-	for (ListNode* ptr = node; ptr != nullptr; ptr = ptr->next) { os << ptr->value; }
+	for (ListNode* ptr = list.first; ptr != nullptr; ptr = ptr->next) { os << ptr->value << " "; }
 	os << std::endl;
 	return os;
 }
