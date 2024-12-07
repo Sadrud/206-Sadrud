@@ -26,7 +26,12 @@ int main () {
 
 	for (int i = 0; i < count; ++i) {
 		int num = 0;
+
 		std::cin >> num;
+		if (std::cin.fail()){
+			std::cout << "Введенное не является числом." << std::endl;
+			return 1;
+		}
 		c(num);
 	}
 
