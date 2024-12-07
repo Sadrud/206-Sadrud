@@ -11,13 +11,14 @@ struct TreeNode {
 };
 
 class Tree {
-	TreeNode* root;
-
 	public:
+	TreeNode* root;
 	Tree () : root(nullptr) {}
 	
 	int calculatePaths (TreeNode* node, int currentSum);
 	int Process () { return calculatePaths (root, 0); }
-	void operator() (int val);
+	void add (int val, TreeNode* node);
+};
 
-}
+void add (int val, TreeNode* node);
+void del (TreeNode* node);

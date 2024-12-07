@@ -1,0 +1,2 @@
+D   0x402a05             # delete non alloc or twice pointer  0x1bc6720
+D   0x4029cd             # delete non alloc or twice pointer  0x1bb4010
