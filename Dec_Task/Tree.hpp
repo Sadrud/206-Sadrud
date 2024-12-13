@@ -1,4 +1,5 @@
 #include <ostream>
+#include <string>
 
 struct TreeNode {
 	int value;
@@ -10,15 +11,12 @@ struct TreeNode {
 	~TreeNode () {}
 };
 
-class Tree {
-	public:
-	TreeNode* root;
-	Tree () : root(nullptr) {}
-	
-	int calculatePaths (TreeNode* node, int currentSum);
-	int Process () { return calculatePaths (root, 0); }
-	void add (int val, TreeNode* node);
-};
+int calculatePaths (TreeNode* node, int number);
+int Process (TreeNode* node);
 
-void add (int val, TreeNode* node);
+TreeNode* TListFill (int lenLevel);
+TreeNode* connect (TreeNode* parentList, TreeNode* childList);
+TreeNode* addNode (int value, TreeNode* prev);
+void add (TreeNode* node, int quantity);
 void del (TreeNode* node);
+void printTree (TreeNode* root, int depth);
