@@ -36,7 +36,7 @@ TreeNode* TListFill (int lenLevel) {
 	for (int j = 1; j < lenLevel; j++) {
 		int num = 0;
 		std::cin >> num;
-		if (num == -1) std::cout << "Элементы под этим элементом не будут считываться при вычислении суммы." << std::endl;
+		if (num == -1) std::cout << "Этот элемент и все под этим элементом не будут считываться при вычислении суммы." << std::endl;
 		if (std::cin.fail() || num > 9 || num < -1) return nullptr;
 		copyFirst = addNode (num, copyFirst);
 	}
@@ -101,7 +101,7 @@ void printTree(TreeNode* root, int depth) {
 		std::cout << "  ";
 	}
 	if (root->value != -1) std::cout << root->value << std::endl;
-	else { std::cout << " " << std::endl; return; }
+	else { return; }
 
 	printTree(root->left, depth + 1);
 	printTree(root->right, depth + 1);
