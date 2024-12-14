@@ -5,6 +5,8 @@ int Process (TreeNode* node) { return calculatePaths (node, 0); }
 
 int calculatePaths (TreeNode* node, int currentNumber) {
 	if (!node) return 0;
+	//if (node->value == -1 && node->right->value != -1 && node->left->value != -1) throw std::invalid_argument ("Что-то дерево не дерево.");
+	if (node->value == -1) { return 0; }
 
 	currentNumber = currentNumber * 10 + node->value;
 
@@ -26,14 +28,16 @@ TreeNode* TListFill (int lenLevel) {
 	TreeNode* first = nullptr;
 	int value = 0;
 	std::cin >> value;
-	if (std::cin.fail() || value > 9 || value < 0) return nullptr;
+	if (value == -1) std::cout << "Этот элемент и все под этим элементом не будут считываться при вычислении суммы." << std::endl;
+	if (std::cin.fail() || value > 9 || value < -1) return nullptr;
 	first = new TreeNode (value);
 	TreeNode* copyFirst = first;
 
 	for (int j = 1; j < lenLevel; j++) {
 		int num = 0;
 		std::cin >> num;
-		if (std::cin.fail() || num > 9 || num < 0) return nullptr;
+		if (num == -1) std::cout << "Элементы под этим элементом не будут считываться при вычислении суммы." << std::endl;
+		if (std::cin.fail() || num > 9 || num < -1) return nullptr;
 		copyFirst = addNode (num, copyFirst);
 	}
 	return first;
@@ -96,7 +100,8 @@ void printTree(TreeNode* root, int depth) {
 	for (int i = 0; i < depth; ++i) {
 		std::cout << "  ";
 	}
-	std::cout << root->value << std::endl;
+	if (root->value != -1) std::cout << root->value << std::endl;
+	else { std::cout << " " << std::endl; return; }
 
 	printTree(root->left, depth + 1);
 	printTree(root->right, depth + 1);
