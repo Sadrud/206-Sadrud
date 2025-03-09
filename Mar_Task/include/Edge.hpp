@@ -1,6 +1,13 @@
 #ifndef EDGES_HPP
 #define EDGES_HPP
 
+#include "Rectangle.hpp"
+#include <cmath>
+#include <list>
+#include <map>
+#include <unordered_map>
+#include <limits>
+
 // sides of rectangle
 enum { LEFT_SIDE, RIGHT_SIDE, BOTTOM_SIDE, TOP_SIDE };
 

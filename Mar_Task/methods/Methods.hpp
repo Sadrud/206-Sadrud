@@ -1,7 +1,9 @@
 #ifndef METHODS_HPP
 #define METHODS_HPP
 
-#include <>
+#include "../include/Point.hpp"
+#include "../include/Rectangle.hpp"
+#include "../include/Edge.hpp"
 
 List<Edge*> *findContour (Rectangle r[], int n) {
 	AxisParallelEdge **schedule = buildSchedule (r, n);
@@ -13,10 +15,10 @@ List<Edge*> *findContour (Rectangle r[], int n) {
 	for (int i = 0; i < 2*n; i++) {
 		switch (schedule[i]->type) {
 			case LEFT_SIDE:
-				schedule[i]->handLeftTransition (sweepline, segments);
+				schedule[i]->handLeftEdge (sweepline, segments);
 				break;
 			case RIGHT_SIDE:
-				schedule[i]->handleRightTransition (sweepline, segments);
+				schedule[i]->handleRightEdge (sweepline, segments);
 				break;
 		}
 	}
@@ -42,6 +44,21 @@ int axisParallelEdgeCmp (AxisParallelEdge *a, AxisParallelEdge *b) {
 	else if (a->type > b->type) return 1;
 	else if (a->r->id < b->r->id) return -1;
 	else if (a->r->id > b->r->id) return 1;
+}
+
+
+// sort
+template <class T>
+void insertionSort (T a[], int n, in (*cmp) (T, T)) {
+	for (int i = 1; i < n; i++) {
+		T v = a[i];
+		int j = i;
+		while ((j > 0) && ((*cmp) (v, a[j - 1]) < 0)) {
+			a[j] = a[j - 1];
+			j--;
+		}
+		a[j] = v;
+	}
 }
 
 #endif

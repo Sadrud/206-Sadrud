@@ -1,6 +1,8 @@
 #ifndef RECTANGLE_HPP
 #define RECTANGLE_HPP
 
+#include "Point.hpp"
+
 class Rectangle {
 	public:
 		Point sw; 	// bottom left corner
