@@ -5,7 +5,7 @@ class Point {
 	public:
 		double x;
 		double y;
-		Point (double x_, double y_);
+		Point (double x_ = 0, double y_ = 0);
 		~Point () {}
 }
 

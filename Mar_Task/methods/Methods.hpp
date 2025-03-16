@@ -1,6 +1,7 @@
 #ifndef METHODS_HPP
 #define METHODS_HPP
 
+#include <list>
 #include "../include/Point.hpp"
 #include "../include/Rectangle.hpp"
 #include "../include/Edge.hpp"

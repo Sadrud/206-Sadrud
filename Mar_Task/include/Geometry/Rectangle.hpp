@@ -10,7 +10,6 @@ class Rectangle {
 		int id;		// identifier
 		
 		Rectangle (Point &sw_, Point &ne_, int id_ = -1);
-		Rectangle (void) {}
 		~Rectangle () {}
 };
 

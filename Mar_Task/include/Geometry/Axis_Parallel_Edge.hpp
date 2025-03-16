@@ -1,5 +1,5 @@
-#ifndef EDGES_HPP
-#define EDGES_HPP
+#ifndef AXIS_PARALLEL_EDGE_HPP
+#define AXIS_PARALLEL_EDGE_HPP
 
 #include "Rectangle.hpp"
 #include <cmath>
