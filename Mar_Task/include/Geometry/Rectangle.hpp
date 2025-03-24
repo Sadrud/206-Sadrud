@@ -9,13 +9,9 @@ class Rectangle {
 		Point ne;	// upper right corner
 		int id;		// identifier
 		
-		Rectangle (Point &sw_, Point &ne_, int id_ = -1);
+		Rectangle () {}
+		Rectangle (Point sw_, Point ne_, int id_ = -1) : sw(sw_), ne(ne_), id(id_) {}
 		~Rectangle () {}
 };
-
-Rectangle::Rectangle (Point &sw_, Point &ne_, int &id_):
-	sw(sw_), ne(ne_), id(id_)
-{
-}
 
 #endif

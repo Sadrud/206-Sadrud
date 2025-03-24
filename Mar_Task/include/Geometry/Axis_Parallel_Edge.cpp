@@ -1,38 +1,5 @@
-#ifndef AXIS_PARALLEL_EDGE_HPP
-#define AXIS_PARALLEL_EDGE_HPP
+#include "Axis_Parallel_Edge.hpp"
 
-#include "Rectangle.hpp"
-#include <cmath>
-#include <cfloat>
-#include <limits>
-#include "Edge.hpp"
-#include "../Data_Structures/List.hpp"
-#include "../Data_Structures/Dictionary.hpp"
-
-// sides of rectangle
-enum { LEFT_SIDE, RIGHT_SIDE, BOTTOM_SIDE, TOP_SIDE };
-
-class AxisParallelEdge {
-	public:
-		Rectangle *r;
-		int count;
-		double m;
-		int type = 1; // type of rectangle side from class Side
-
-		AxisParallelEdge () {}
-		~AxisParallelEdge () {}
-		AxisParallelEdge (Rectangle *r_, int count_);
-		double pos ();
-		double min ();
-		double max ();
-		void setMin (double);
-		void handleLeftEdge (Dictionary<AxisParallelEdge*>& , List<Edge*>* );
-		void handleRightEdge (Dictionary<AxisParallelEdge*>& , List<Edge*>* );
-
-		void print () const;
-};
-
-/*
 AxisParallelEdge::AxisParallelEdge (Rectangle *r_, int type_) :
 	r(r_), count(0), m(-DBL_MAX), type(type_)
 {
@@ -47,22 +14,22 @@ void AxisParallelEdge::print() const {
 	switch (type) {
 		case LEFT_SIDE:
 			std::cout << "LEFT_SIDE ";
-			std::cout << "(" << r->sw.x << ", " << r->sw.y << ") -> (" 
+			std::cout << "(" << r->sw.x << ", " << r->sw.y << ") -> ("
 				<< r->sw.x << ", " << r->ne.y << ")" << std::endl;
 			break;
 		case RIGHT_SIDE:
 			std::cout << "RIGHT_SIDE ";
-			std::cout << "(" << r->ne.x << ", " << r->sw.y << ") -> (" 
+			std::cout << "(" << r->ne.x << ", " << r->sw.y << ") -> ("
 				<< r->ne.x << ", " << r->ne.y << ")" << std::endl;
 			break;
 		case BOTTOM_SIDE:
 			std::cout << "BOTTOM_SIDE ";
-			std::cout << "(" << r->sw.x << ", " << r->sw.y << ") -> (" 
+			std::cout << "(" << r->sw.x << ", " << r->sw.y << ") -> ("
 				<< r->ne.x << ", " << r->sw.y << ")" << std::endl;
 			break;
 		case TOP_SIDE:
 			std::cout << "TOP_SIDE ";
-			std::cout << "(" << r->sw.x << ", " << r->ne.y << ") -> (" 
+			std::cout << "(" << r->sw.x << ", " << r->ne.y << ") -> ("
 				<< r->ne.x << ", " << r->ne.y << ")" << std::endl;
 			break;
 		default:
@@ -185,5 +152,3 @@ void AxisParallelEdge::handleRightEdge (Dictionary<AxisParallelEdge*> &sweepline
 	sweepline.remove (u);
 	sweepline.remove (initl);
 }
-*/
-#endif
