@@ -1,5 +1,5 @@
-CC = g++ -Wall -Werror -Wextra
-SOURCES = main.cpp ../include/Data_Structures/Dictionary.hpp ../include/Data_Structures/RandomizedNode.hpp ../include/Data_Structures/BraidedNode.hpp ../include/Data_Structures/TreeNode.hpp ../include/Data_Structures/Node.hpp
+CC = g++
+SOURCES = main.cpp Methods.cpp ../include/Data_Structures/Node.cpp ../include/Geometry/Axis_Parallel_Edge.cpp 
 EXECUTABLE = MyProject
 CFLAGS = -c 
 OBJECTS = $(SOURCES:.cpp = .o)
