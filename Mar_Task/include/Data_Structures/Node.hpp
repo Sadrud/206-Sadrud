@@ -1,21 +1,23 @@
 #ifndef NODE_HPP
 #define NODE_HPP
 
+#include "../Exception.hpp"
+
 class Node {
 	protected:
 		Node* next_;
 		Node* prev_;
 
 	public:
-		Node ();
-		virtual ~Node ();
-		Node* next ();
-		Node* prev ();
+		Node () : next_(this), prev_(this) {}
+		~Node () {}
+		Node* next () { return next_; }
+		Node* prev () { return prev_; }
 		Node* insert (Node*);
 		Node* remove ();
 		void splice (Node*);
 };
-
+/*
 Node::Node () : next_(this), prev_(this) {}
 
 Node::~Node () {}
@@ -48,5 +50,5 @@ void Node::splice (Node* b) {
 	b->next_ = an;
 	an->prev_ = b;
 	bn->prev_ = a;
-}
+}*/
 #endif

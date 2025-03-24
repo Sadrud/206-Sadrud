@@ -7,7 +7,6 @@
 template <typename T>
 class BraidedNode : public Node, public TreeNode<T> {
 	public:
-		BraidedNode ();
 		BraidedNode (T);
 		BraidedNode<T>* rchild ();
 		BraidedNode<T>* lchild ();
@@ -17,9 +16,6 @@ class BraidedNode : public Node, public TreeNode<T> {
 
 template <typename T>
 BraidedNode<T>::BraidedNode (T val) : Node (), TreeNode<T>(val) {}
-
-template <typename T>
-BraidedNode<T>::BraidedNode () : Node (), TreeNode<T>() {}
 
 template <typename T>
 BraidedNode<T>* BraidedNode<T>::rchild () { return static_cast<BraidedNode<T>*>(TreeNode<T>::rchild_); }
