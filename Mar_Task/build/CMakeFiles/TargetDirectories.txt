@@ -1,0 +1,3 @@
+/home/sadrudin/206-Sadrud/Mar_Task/build/CMakeFiles/my_algorithm.dir
+/home/sadrudin/206-Sadrud/Mar_Task/build/CMakeFiles/edit_cache.dir
+/home/sadrudin/206-Sadrud/Mar_Task/build/CMakeFiles/rebuild_cache.dir
