@@ -284,10 +284,8 @@ T Dictionary<T>::insert (T val) {
 		result = (*cmp_) (val, p->val_);
 		if (result < 0)
 			n = p->lchild();
-		else if (result > 0) 
-			n = p->rchild();
 		else
-			return nullptr;
+			n = p->rchild();
 	}
 	window_ = new RandomizedNode<T>(val);
 	window_->parent_ = p;

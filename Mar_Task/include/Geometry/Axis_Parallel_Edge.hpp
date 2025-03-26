@@ -19,7 +19,7 @@ class AxisParallelEdge {
 		double m;
 		int type = 1; // type of rectangle side from class Side
 
-		AxisParallelEdge () {}
+		AxisParallelEdge () : r(new Rectangle(Point(0, 0), Point(0, 0))), count(0), type(-1) {}
 		~AxisParallelEdge () {}
 		AxisParallelEdge (Rectangle *r_, int count_);
 		double pos ();

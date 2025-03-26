@@ -99,7 +99,7 @@ void AxisParallelEdge::handleLeftEdge (Dictionary<AxisParallelEdge*> &sweepline,
 			segs->insert(new Edge (a, b));
 			Point c (l->min(), l->pos());
 			Point d (curx, l->pos());
-			segs->insert(new Edge (a, b));
+			segs->insert(new Edge (c, d));
 		}
 		else if ((l->type == TOP_SIDE) && (l->count++ == 0)) {
 			Point a (l->min(), l->pos());
@@ -134,7 +134,7 @@ void AxisParallelEdge::handleRightEdge (Dictionary<AxisParallelEdge*> &sweepline
 	AxisParallelEdge *initl = l;
 	AxisParallelEdge *p = l;
 	l = sweepline.next();
-	for ( ; l != u; p = l, l = sweepline.next()) {
+	for (int i = 0; l != u; p = l, l = sweepline.next()) {
 		if ((l->type == BOTTOM_SIDE) && (--l->count == 1)) {
 			Point a(curx, p->pos());
 			Point b(curx, l->pos());

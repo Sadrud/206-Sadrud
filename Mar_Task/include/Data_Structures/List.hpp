@@ -47,7 +47,7 @@ class List {
 		bool isFirst ();
 		bool isLast ();
 		bool isHead ();
-		void print ();
+		void print (const std::string& filename);
 };	
 
 template <class T>
@@ -67,10 +67,21 @@ List<T>::~List () {
 }
 
 template <class T>
-void List<T>::print () {
+void List<T>::print (const std::string& filename) {
 	first();
+	std::string folder = "input";
+
+	#ifdef _WIN32
+		mkdir(folder.c_str());
+	#else
+		mkdir(folder.c_str(), 0777);
+	#endif
+
+	std::string filepath = folder + "/" + filename;
+	std::ofstream out (filepath, std::ios::app);
 	for (int i = 0; i < length(); i++, next())
-		window_->val_->print();
+		out << *window_->val_;
+	out.close();
 }
 
 template <class T>
