@@ -1,122 +1,149 @@
-//#include <iostream>
-//#include "../include/Data_Structures/Node.cpp"
-/*#include "../include/Data_Structures/TreeNode.hpp"
-#include "../include/Data_Structures/BraidedNode.hpp"
-#include "../include/Data_Structures/Dictionary.hpp"
-#include "../include/Data_Structures/List.hpp"
-#include "../include/Geometry/Axis_Parallel_Edge.hpp"
-#include "../include/Geometry/Rectangle.hpp"
-#include "../include/Geometry/Point.hpp"
-#include "../include/Geometry/Edge.hpp"
-*/
-//#include "Methods.hpp"
-
 #include "Methods.hpp"
+#include "../tests/mainTest.cpp"
+
+//double eps = 1e-10;
 
 int cmp (int* a, int* b) {
 	if (&a > &b) return 1;
 	else if (&a < &b) return -1;
 	return 0;
 }
-
-int main () {
-	Node a;
-	Node b;
-	Node *c = a.insert(&b);
-	std::cout << c << std::endl;
-
-	int *n1 = new int(1);
-	TreeNode<int*> a1(n1);
-
-	int *n2 = new int(2);
-	BraidedNode<int*> a2(n2);
-	int *n3 = new int(3);
-	BraidedNode<int*> a3(n3);
-	if (a2.next() == nullptr) std::cout << "nullptr" << std::endl;
-	if (a2.rchild() != nullptr) std::cout << "nullptr" << std::endl;
-	if (a2.rchild() == nullptr) std::cout << a2.rchild() << std::endl;
-
-	std::cout << "rand() = " << rand() << std::endl;
-
-	int *n5 = new int(5);
-
-	RandomizedNode<int*> r(n5);
-	if (r.lchild() == nullptr) std::cout << "nulptr" << std::endl;
-	if (r.rchild() == nullptr) std::cout << "nulptr" << std::endl;
-	if (r.parent() == nullptr) std::cout << "nulptr" << std::endl;
-	std::cout << r.priority() << std::endl;
-
-	Dictionary<int*> d(cmp, 1);
-	std::cout << d.next() << std::endl;
-	std::cout << d.val() << std::endl;
-
-	int *n5n = new int (5);
-	d.insert(n5n);
-	int *n0 = new int(-1);
-	std::cout << *d.locate(n0) << std::endl;
-	d.insert(n0);
-	int *nn = new int(-5);
-	d.insert(nn);
-	std::cout << *d.findMin() << std::endl;
-	int *n2n = new int(-2);
-	d.insert(n2n);
-	try {
-		d.remove(n0);
-	} catch (Exception& ex) { ex.print_message(); }
-	std::cout << *d.locate(n0) << std::endl;
-	d.remove();
-
-	List<int*> m1;
-	std::cout << sizeof(m1) << std::endl;
-	int *m2 = new int(10);
-	int *m3 = new int(11);
-	int *m5 = new int(13);
-	int *m4 = new int(12);
-	m1.insert(m2);
-	std::cout << *m1.val() << std::endl;
-	m1.insert(m3);
-	std::cout << *m1.val() << std::endl;
-	m1.insert(m5);
-	std::cout << *m1.val() << std::endl;
-	m1.append(m4);
-	std::cout << *m1.val() << std::endl;
-
-
-	List<int*> p1;
-	int *p2 = new int(3);
-	int *p3 = new int(5);
-	p1.insert(p2);
-	p1.insert(p3);
-
-	p1.append(&m1);
-	std::cout << *p1.val() << std::endl;
-
-	int *p5 = new int(100);
-	p1.insert (p5);
-	std::cout << *p1.val() << std::endl;
-
-	std::cout << "печать спсиска" << p1.length() << std::endl;
-	p1.first();
-	for (int i = 0; i < 7; i++) {
-		std::cout << *p1.val() << std::endl;
-		p1.next();
+/*
+void randomTest () {
+	int quantity = 10000;
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> dist(0,100);
+	Rectangle* parr = new Rectangle[quantity];
+	for (int i = 0; i < quantity; i++) {
+		double x1 = dist(gen);
+		double y1 = dist(gen);
+		parr[i] = Rectangle(Point(x1, y1), Point(x1+dist(gen)+eps, y1+dist(gen)+eps));
 	}
-
-	Point po1(0, 1);
-	Point po2(1, 1);
-	Rectangle rect(po1, po2);
-
-	Rectangle* parr = new Rectangle[10];
-	for (int i = 0; i < 10; i++) { parr[i] = Rectangle(Point(i, i), Point(i+2, i+2)); }
-
-	List<Edge*>* p = findContour (parr, 2);
-	p->print();
-	Point poi1(1, 1);
-	Point poi2(1, 2);
-	Edge* e = new Edge(poi1, poi2);
-	e->print();
-	p->insert(e);
-	delete p;
+	parr->print("Рандомные прямоугольники.txt", quantity);
+	List<Edge*>* edges = findContour (parr, quantity);
+	edges->print("Рандомные прямоугольники.txt");
+	
 	delete [] parr;
+	delete edges;
+}
+
+void randomTest2 () {
+	int quantity = 1000;
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> dist(0,100);
+	std::random_device rd2;
+	std::mt19937 gen2(rd2());
+	std::uniform_int_distribution<> dist2(0,10);
+	Rectangle* parr = new Rectangle[quantity];
+	for (int i = 0; i < quantity; i++) {
+		double x1 = dist(gen);
+		double y1 = dist(gen);
+		parr[i] = Rectangle(Point(x1, y1), Point(x1+dist2(gen2)+eps, y1+dist2(gen2)+eps));
+	}
+	parr->print("Рандомные прямоугольники 2.txt", quantity);
+	List<Edge*>* edges = findContour (parr, quantity);
+	edges->print("Рандомные прямоугольники 2.txt");
+
+	delete [] parr;
+	delete edges;
+}
+
+void randomTest3 () {
+	int quantity = 1000;
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> dist(0,1000);
+	std::random_device rd2;
+	std::mt19937 gen2(rd2());
+	std::uniform_int_distribution<> dist2(0,10);
+	Rectangle* parr = new Rectangle[quantity];
+	for (int i = 0; i < quantity; i++) {
+		double x1 = dist(gen);
+		double y1 = dist(gen);
+		parr[i] = Rectangle(Point(x1, y1), Point(x1+dist2(gen2)+eps, y1+dist2(gen2)+eps));
+	}
+	parr->print("Рандомные прямоугольники 3.txt", quantity);
+	List<Edge*>* edges = findContour (parr, quantity);
+	edges->print("Рандомные прямоугольники 3.txt");
+
+	delete [] parr;
+	delete edges;
+}
+
+void diagonalTest () {
+	int quantity = 7;
+	Rectangle* parr = new Rectangle[quantity];
+	for (int i = 0; i < quantity-1; i++) { parr[i] = Rectangle(Point(i, i), Point(i+1, i+1)); }
+	parr[quantity-1] = Rectangle(Point(3, 3), Point(4, 4));
+	parr->print("Прямоугольники по диагонали.txt", quantity);
+	List<Edge*>* edges = findContour (parr, quantity);
+	edges->print("Прямоугольники по диагонали.txt");
+
+	delete [] parr;
+	delete edges;
+}
+
+void shrinkTest () {
+	int quantity = 3;
+	Rectangle* parr = new Rectangle[quantity];
+	for (int i = 0; i < quantity; i++) { parr[i] = Rectangle(Point(0, 0), Point(quantity-i, quantity-i)); }
+	parr->print("Сжимающиеся прямоугольники.txt", quantity);
+	List<Edge*>* edges = findContour (parr, quantity);
+	edges->print("Сжимающиеся прямоугольники.txt");
+
+	delete [] parr;
+	delete edges;
+}
+
+void latticeTest () {
+	int quantity = 10000;
+	Rectangle* parr = new Rectangle[quantity];
+	for (int i = 0; i < sqrt(quantity); i++) {
+		for (int j = 0; j < static_cast<int>(sqrt(quantity)); j++) { parr[i*static_cast<int>(sqrt(quantity)) + j] = Rectangle(Point(i, j), Point(i+1, j+1)); }
+	}
+	parr->print("Решетка.txt", quantity);
+	List<Edge*>* edges = findContour (parr, quantity);
+	edges->print("Решетка.txt");
+
+	delete [] parr;
+	delete edges;
+}
+
+void ladderTest () {
+	int quantity = 100;
+	Rectangle* parr = new Rectangle[quantity];
+	for (int i = 0; i < quantity/2; i++) { parr[i] = Rectangle(Point(i, i), Point(i+2, i+2)); }
+	for (int i = 0; i < quantity/2; i++) { parr[quantity/2+i] = Rectangle(Point(quantity/2-i, i), Point(quantity/2-i+2, i+2)); }
+	parr->print("Объединение лесенок.txt", quantity);
+	List<Edge*>* edges = findContour (parr, quantity);
+	edges->print("Объединение лесенок.txt");
+
+	delete [] parr;
+	delete edges;
+}
+
+void embeddedTest () {
+	int quantity = 1000;
+	Rectangle* parr = new Rectangle[quantity];
+	for (int i = 1; i < quantity+1; i++) { parr[i] = Rectangle(Point(quantity/2-i, quantity/2-i), Point(quantity/2+i, quantity/2+i)); }
+	parr->print("Вложенные квадраты.txt", quantity);
+	List<Edge*>* edges = findContour (parr, quantity);
+	edges->print("Вложенные квадраты.txt");
+
+	delete [] parr;
+	delete edges;
+}
+*/
+int main () {
+	randomTest();
+	randomTest2 ();
+	randomTest3 ();
+	diagonalTest ();
+	shrinkTest ();
+	latticeTest();
+	ladderTest ();
+
 	return 0;
 }

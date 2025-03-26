@@ -9,3 +9,7 @@ Myproject : $(SOURCES)
 
 cpp.o : .o
 		$(CC) $(CFLAGS) $< -o $@
+
+run: Myproject
+		./$(EXECUTABLE)
+		python3 visual.py
