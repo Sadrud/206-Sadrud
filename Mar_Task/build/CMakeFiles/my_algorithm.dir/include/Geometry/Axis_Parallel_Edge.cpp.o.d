@@ -1,9 +1,9 @@
-CMakeFiles/my_algorithm.dir/methods/main.cpp.o: \
- /home/sadrudin/206-Sadrud/Mar_Task/methods/main.cpp \
+CMakeFiles/my_algorithm.dir/include/Geometry/Axis_Parallel_Edge.cpp.o: \
+ /home/sadrudin/206-Sadrud/Mar_Task/include/Geometry/Axis_Parallel_Edge.cpp \
  /usr/include/stdc-predef.h \
- /home/sadrudin/206-Sadrud/Mar_Task/methods/Methods.hpp \
- /home/sadrudin/206-Sadrud/Mar_Task/methods/../include/Data_Structures/Node.hpp \
- /home/sadrudin/206-Sadrud/Mar_Task/methods/../include/Data_Structures/../Exception.hpp \
+ /home/sadrudin/206-Sadrud/Mar_Task/include/Geometry/Axis_Parallel_Edge.hpp \
+ /home/sadrudin/206-Sadrud/Mar_Task/include/Geometry/Rectangle.hpp \
+ /home/sadrudin/206-Sadrud/Mar_Task/include/Geometry/../Exception.hpp \
  /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -150,10 +150,7 @@ CMakeFiles/my_algorithm.dir/methods/main.cpp.o: \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
- /home/sadrudin/206-Sadrud/Mar_Task/methods/../include/Geometry/Axis_Parallel_Edge.hpp \
- /home/sadrudin/206-Sadrud/Mar_Task/methods/../include/Geometry/Rectangle.hpp \
- /home/sadrudin/206-Sadrud/Mar_Task/methods/../include/Geometry/../Exception.hpp \
- /home/sadrudin/206-Sadrud/Mar_Task/methods/../include/Geometry/Point.hpp \
+ /home/sadrudin/206-Sadrud/Mar_Task/include/Geometry/Point.hpp \
  /usr/include/c++/11/fstream /usr/include/c++/11/bits/codecvt.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
@@ -197,12 +194,13 @@ CMakeFiles/my_algorithm.dir/methods/main.cpp.o: \
  /usr/include/c++/11/tr1/poly_laguerre.tcc \
  /usr/include/c++/11/tr1/riemann_zeta.tcc /usr/include/c++/11/cfloat \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h \
- /home/sadrudin/206-Sadrud/Mar_Task/methods/../include/Geometry/Edge.hpp \
- /home/sadrudin/206-Sadrud/Mar_Task/methods/../include/Geometry/../Data_Structures/List.hpp \
- /home/sadrudin/206-Sadrud/Mar_Task/methods/../include/Geometry/../Data_Structures/BraidedNode.hpp \
- /home/sadrudin/206-Sadrud/Mar_Task/methods/../include/Geometry/../Data_Structures/Node.hpp \
- /home/sadrudin/206-Sadrud/Mar_Task/methods/../include/Geometry/../Data_Structures/TreeNode.hpp \
- /home/sadrudin/206-Sadrud/Mar_Task/methods/../include/Geometry/../Data_Structures/Dictionary.hpp \
+ /home/sadrudin/206-Sadrud/Mar_Task/include/Geometry/Edge.hpp \
+ /home/sadrudin/206-Sadrud/Mar_Task/include/Geometry/../Data_Structures/List.hpp \
+ /home/sadrudin/206-Sadrud/Mar_Task/include/Geometry/../Data_Structures/BraidedNode.hpp \
+ /home/sadrudin/206-Sadrud/Mar_Task/include/Geometry/../Data_Structures/Node.hpp \
+ /home/sadrudin/206-Sadrud/Mar_Task/include/Geometry/../Data_Structures/../Exception.hpp \
+ /home/sadrudin/206-Sadrud/Mar_Task/include/Geometry/../Data_Structures/TreeNode.hpp \
+ /home/sadrudin/206-Sadrud/Mar_Task/include/Geometry/../Data_Structures/Dictionary.hpp \
  /usr/include/c++/11/random /usr/include/c++/11/bits/random.h \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_vector.h \
@@ -214,6 +212,4 @@ CMakeFiles/my_algorithm.dir/methods/main.cpp.o: \
  /usr/include/c++/11/bits/stl_numeric.h /usr/include/c++/11/bit \
  /usr/include/c++/11/pstl/glue_numeric_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
- /home/sadrudin/206-Sadrud/Mar_Task/methods/../include/Geometry/../Data_Structures/List.hpp \
- /home/sadrudin/206-Sadrud/Mar_Task/methods/../include/Geometry/Edge.hpp \
- /home/sadrudin/206-Sadrud/Mar_Task/methods/../tests/mainTest.cpp
+ /home/sadrudin/206-Sadrud/Mar_Task/include/Geometry/../Data_Structures/List.hpp

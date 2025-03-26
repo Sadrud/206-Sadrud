@@ -8,6 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/sadrudin/206-Sadrud/Mar_Task/include/Data_Structures/Node.cpp" "CMakeFiles/my_algorithm.dir/include/Data_Structures/Node.cpp.o" "gcc" "CMakeFiles/my_algorithm.dir/include/Data_Structures/Node.cpp.o.d"
+  "/home/sadrudin/206-Sadrud/Mar_Task/include/Geometry/Axis_Parallel_Edge.cpp" "CMakeFiles/my_algorithm.dir/include/Geometry/Axis_Parallel_Edge.cpp.o" "gcc" "CMakeFiles/my_algorithm.dir/include/Geometry/Axis_Parallel_Edge.cpp.o.d"
   "/home/sadrudin/206-Sadrud/Mar_Task/methods/Methods.cpp" "CMakeFiles/my_algorithm.dir/methods/Methods.cpp.o" "gcc" "CMakeFiles/my_algorithm.dir/methods/Methods.cpp.o.d"
   "/home/sadrudin/206-Sadrud/Mar_Task/methods/main.cpp" "CMakeFiles/my_algorithm.dir/methods/main.cpp.o" "gcc" "CMakeFiles/my_algorithm.dir/methods/main.cpp.o.d"
   )

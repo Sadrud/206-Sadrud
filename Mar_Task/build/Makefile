@@ -129,6 +129,54 @@ my_algorithm/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_algorithm.dir/build.make CMakeFiles/my_algorithm.dir/build
 .PHONY : my_algorithm/fast
 
+include/Data_Structures/Node.o: include/Data_Structures/Node.cpp.o
+.PHONY : include/Data_Structures/Node.o
+
+# target to build an object file
+include/Data_Structures/Node.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_algorithm.dir/build.make CMakeFiles/my_algorithm.dir/include/Data_Structures/Node.cpp.o
+.PHONY : include/Data_Structures/Node.cpp.o
+
+include/Data_Structures/Node.i: include/Data_Structures/Node.cpp.i
+.PHONY : include/Data_Structures/Node.i
+
+# target to preprocess a source file
+include/Data_Structures/Node.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_algorithm.dir/build.make CMakeFiles/my_algorithm.dir/include/Data_Structures/Node.cpp.i
+.PHONY : include/Data_Structures/Node.cpp.i
+
+include/Data_Structures/Node.s: include/Data_Structures/Node.cpp.s
+.PHONY : include/Data_Structures/Node.s
+
+# target to generate assembly for a file
+include/Data_Structures/Node.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_algorithm.dir/build.make CMakeFiles/my_algorithm.dir/include/Data_Structures/Node.cpp.s
+.PHONY : include/Data_Structures/Node.cpp.s
+
+include/Geometry/Axis_Parallel_Edge.o: include/Geometry/Axis_Parallel_Edge.cpp.o
+.PHONY : include/Geometry/Axis_Parallel_Edge.o
+
+# target to build an object file
+include/Geometry/Axis_Parallel_Edge.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_algorithm.dir/build.make CMakeFiles/my_algorithm.dir/include/Geometry/Axis_Parallel_Edge.cpp.o
+.PHONY : include/Geometry/Axis_Parallel_Edge.cpp.o
+
+include/Geometry/Axis_Parallel_Edge.i: include/Geometry/Axis_Parallel_Edge.cpp.i
+.PHONY : include/Geometry/Axis_Parallel_Edge.i
+
+# target to preprocess a source file
+include/Geometry/Axis_Parallel_Edge.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_algorithm.dir/build.make CMakeFiles/my_algorithm.dir/include/Geometry/Axis_Parallel_Edge.cpp.i
+.PHONY : include/Geometry/Axis_Parallel_Edge.cpp.i
+
+include/Geometry/Axis_Parallel_Edge.s: include/Geometry/Axis_Parallel_Edge.cpp.s
+.PHONY : include/Geometry/Axis_Parallel_Edge.s
+
+# target to generate assembly for a file
+include/Geometry/Axis_Parallel_Edge.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_algorithm.dir/build.make CMakeFiles/my_algorithm.dir/include/Geometry/Axis_Parallel_Edge.cpp.s
+.PHONY : include/Geometry/Axis_Parallel_Edge.cpp.s
+
 methods/Methods.o: methods/Methods.cpp.o
 .PHONY : methods/Methods.o
 
@@ -186,6 +234,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... my_algorithm"
+	@echo "... include/Data_Structures/Node.o"
+	@echo "... include/Data_Structures/Node.i"
+	@echo "... include/Data_Structures/Node.s"
+	@echo "... include/Geometry/Axis_Parallel_Edge.o"
+	@echo "... include/Geometry/Axis_Parallel_Edge.i"
+	@echo "... include/Geometry/Axis_Parallel_Edge.s"
 	@echo "... methods/Methods.o"
 	@echo "... methods/Methods.i"
 	@echo "... methods/Methods.s"

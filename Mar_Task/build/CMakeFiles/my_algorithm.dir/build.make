@@ -97,19 +97,51 @@ CMakeFiles/my_algorithm.dir/methods/Methods.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/my_algorithm.dir/methods/Methods.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sadrudin/206-Sadrud/Mar_Task/methods/Methods.cpp -o CMakeFiles/my_algorithm.dir/methods/Methods.cpp.s
 
+CMakeFiles/my_algorithm.dir/include/Geometry/Axis_Parallel_Edge.cpp.o: CMakeFiles/my_algorithm.dir/flags.make
+CMakeFiles/my_algorithm.dir/include/Geometry/Axis_Parallel_Edge.cpp.o: ../include/Geometry/Axis_Parallel_Edge.cpp
+CMakeFiles/my_algorithm.dir/include/Geometry/Axis_Parallel_Edge.cpp.o: CMakeFiles/my_algorithm.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sadrudin/206-Sadrud/Mar_Task/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/my_algorithm.dir/include/Geometry/Axis_Parallel_Edge.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/my_algorithm.dir/include/Geometry/Axis_Parallel_Edge.cpp.o -MF CMakeFiles/my_algorithm.dir/include/Geometry/Axis_Parallel_Edge.cpp.o.d -o CMakeFiles/my_algorithm.dir/include/Geometry/Axis_Parallel_Edge.cpp.o -c /home/sadrudin/206-Sadrud/Mar_Task/include/Geometry/Axis_Parallel_Edge.cpp
+
+CMakeFiles/my_algorithm.dir/include/Geometry/Axis_Parallel_Edge.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/my_algorithm.dir/include/Geometry/Axis_Parallel_Edge.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sadrudin/206-Sadrud/Mar_Task/include/Geometry/Axis_Parallel_Edge.cpp > CMakeFiles/my_algorithm.dir/include/Geometry/Axis_Parallel_Edge.cpp.i
+
+CMakeFiles/my_algorithm.dir/include/Geometry/Axis_Parallel_Edge.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/my_algorithm.dir/include/Geometry/Axis_Parallel_Edge.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sadrudin/206-Sadrud/Mar_Task/include/Geometry/Axis_Parallel_Edge.cpp -o CMakeFiles/my_algorithm.dir/include/Geometry/Axis_Parallel_Edge.cpp.s
+
+CMakeFiles/my_algorithm.dir/include/Data_Structures/Node.cpp.o: CMakeFiles/my_algorithm.dir/flags.make
+CMakeFiles/my_algorithm.dir/include/Data_Structures/Node.cpp.o: ../include/Data_Structures/Node.cpp
+CMakeFiles/my_algorithm.dir/include/Data_Structures/Node.cpp.o: CMakeFiles/my_algorithm.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sadrudin/206-Sadrud/Mar_Task/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/my_algorithm.dir/include/Data_Structures/Node.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/my_algorithm.dir/include/Data_Structures/Node.cpp.o -MF CMakeFiles/my_algorithm.dir/include/Data_Structures/Node.cpp.o.d -o CMakeFiles/my_algorithm.dir/include/Data_Structures/Node.cpp.o -c /home/sadrudin/206-Sadrud/Mar_Task/include/Data_Structures/Node.cpp
+
+CMakeFiles/my_algorithm.dir/include/Data_Structures/Node.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/my_algorithm.dir/include/Data_Structures/Node.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sadrudin/206-Sadrud/Mar_Task/include/Data_Structures/Node.cpp > CMakeFiles/my_algorithm.dir/include/Data_Structures/Node.cpp.i
+
+CMakeFiles/my_algorithm.dir/include/Data_Structures/Node.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/my_algorithm.dir/include/Data_Structures/Node.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sadrudin/206-Sadrud/Mar_Task/include/Data_Structures/Node.cpp -o CMakeFiles/my_algorithm.dir/include/Data_Structures/Node.cpp.s
+
 # Object files for target my_algorithm
 my_algorithm_OBJECTS = \
 "CMakeFiles/my_algorithm.dir/methods/main.cpp.o" \
-"CMakeFiles/my_algorithm.dir/methods/Methods.cpp.o"
+"CMakeFiles/my_algorithm.dir/methods/Methods.cpp.o" \
+"CMakeFiles/my_algorithm.dir/include/Geometry/Axis_Parallel_Edge.cpp.o" \
+"CMakeFiles/my_algorithm.dir/include/Data_Structures/Node.cpp.o"
 
 # External object files for target my_algorithm
 my_algorithm_EXTERNAL_OBJECTS =
 
 libmy_algorithm.so: CMakeFiles/my_algorithm.dir/methods/main.cpp.o
 libmy_algorithm.so: CMakeFiles/my_algorithm.dir/methods/Methods.cpp.o
+libmy_algorithm.so: CMakeFiles/my_algorithm.dir/include/Geometry/Axis_Parallel_Edge.cpp.o
+libmy_algorithm.so: CMakeFiles/my_algorithm.dir/include/Data_Structures/Node.cpp.o
 libmy_algorithm.so: CMakeFiles/my_algorithm.dir/build.make
 libmy_algorithm.so: CMakeFiles/my_algorithm.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sadrudin/206-Sadrud/Mar_Task/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX shared library libmy_algorithm.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sadrudin/206-Sadrud/Mar_Task/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX shared library libmy_algorithm.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/my_algorithm.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

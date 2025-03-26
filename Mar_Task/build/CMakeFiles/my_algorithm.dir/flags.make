@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -Dmy_algorithm_EXPORTS
 
-CXX_INCLUDES = -I/home/sadrudin/206-Sadrud/Mar_Task/include
+CXX_INCLUDES = -I/home/sadrudin/206-Sadrud/Mar_Task/include/Data_Srtuctures -I/home/sadrudin/206-Sadrud/Mar_Task/include/Geometry
 
 CXX_FLAGS = -fPIC
 
