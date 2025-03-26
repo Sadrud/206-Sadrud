@@ -8,10 +8,12 @@ set(CMAKE_CXX_STANDARD 17)
 set(SOURCES
 	methods/main.cpp
 	methods/Methods.cpp
+	include/Geometry/Axis_Parallel_Edge.cpp
+	include/Data_Structures/Node.cpp
 	)
 
 # Добавляем заголовочные файлы
-include_directories(include)
+include_directories(include/Data_Srtuctures include/Geometry)
 
 # Создаем библиотеку
 add_library(my_algorithm SHARED ${SOURCES})
