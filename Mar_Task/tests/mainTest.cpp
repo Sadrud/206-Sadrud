@@ -1,6 +1,12 @@
 #include <fstream>
 double eps = 1e-10;
 
+int cmp (int* a, int* b) {
+	if (&a > &b) return 1;
+	else if (&a < &b) return -1;
+	return 0;
+}
+
 void randomTest () {
 	int quantity = 10000;
 	std::random_device rd;
