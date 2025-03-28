@@ -23,8 +23,8 @@ int main () {
 	if (nread == 0) {
 		printf ("END OF FILE occured\n");
 	}
-	write (STDOUT_FILENO, buf, nread);
-	write (fd, buf, nread);
+	write (STDOUT_FILENO, filename, nread);
+	write (fd, filename, nread);
 	
 	sleep(15);
 	

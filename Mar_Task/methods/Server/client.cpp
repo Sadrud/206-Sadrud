@@ -5,7 +5,7 @@ int main() {
 	struct sockaddr_in adr = {0, 0, 0, 0};
 	adr.sin_family = AF_INET;
 	adr.sin_port = htons(34543);
-	Inet_pton(AF_INET, "127.0.0.1", &adr.sin_addr);
+	Inet_pton(AF_INET, "127.0.0.0", &adr.sin_addr);
 	Connect(fd, (struct sockaddr *) &adr, sizeof adr);
 	write(fd, "Hello\n", 6);
 	char buf[256];
