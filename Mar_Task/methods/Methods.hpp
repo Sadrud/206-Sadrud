@@ -5,8 +5,8 @@
 #include "../include/Geometry/Axis_Parallel_Edge.hpp"
 #include "../include/Geometry/Edge.hpp"
 
-static double min = -DBL_MAX;
-static double max = DBL_MAX;
+//static double min = -DBL_MAX/2;
+//static double max = DBL_MAX/2;
 
 int axisParallelEdgeCmp (AxisParallelEdge *a, AxisParallelEdge *b);
 template <class T>

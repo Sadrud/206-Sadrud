@@ -4,9 +4,10 @@
 #include <iostream>
 #include <fstream>
 
-static double eps = 1e-15;
-static double abs (double x, double y) {
-	if (x - y >= 0)
+static double epsilon = 1e-20;
+template <typename T>
+static double abs (T x, T y) {
+	if (x > y)
 		return x-y;
 	return y-x;
 }
@@ -17,7 +18,7 @@ class Point {
 		double y;
 		Point (double x_ = 0, double y_ = 0) : x(x_), y(y_) {}
 		~Point () {}
-		bool operator== (Point& other) { return (abs(x, other.x) <= eps || abs(y, other.y) <= eps); }
+		bool operator== (Point& other) { return (abs(x, other.x) < epsilon || abs(y, other.y) < epsilon); }
 		bool operator< (Point& other) { return  ((x < other.x) || (y < other.y)); }
 };
 

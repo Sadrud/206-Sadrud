@@ -1,0 +1,3 @@
+/users/2/206/Akhmedov_SA/206-Sadrud/Mar_Task/methods/CMakeFiles/rebuild_cache.dir
+/users/2/206/Akhmedov_SA/206-Sadrud/Mar_Task/methods/CMakeFiles/my_project.dir
+/users/2/206/Akhmedov_SA/206-Sadrud/Mar_Task/methods/CMakeFiles/edit_cache.dir

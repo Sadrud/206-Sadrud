@@ -134,7 +134,7 @@ void AxisParallelEdge::handleRightEdge (Dictionary<AxisParallelEdge*> &sweepline
 	AxisParallelEdge *initl = l;
 	AxisParallelEdge *p = l;
 	l = sweepline.next();
-	for (int i = 0; l != u; p = l, l = sweepline.next()) {
+	for ( ; l != u; p = l, l = sweepline.next()) {
 		if ((l->type == BOTTOM_SIDE) && (--l->count == 1)) {
 			Point a(curx, p->pos());
 			Point b(curx, l->pos());

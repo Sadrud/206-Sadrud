@@ -40,7 +40,7 @@ extern "C" {
 		AxisParallelEdge **schedule = buildSchedule (r, n);
 		List<Edge*> *segments = new List<Edge*>;
 		Dictionary<AxisParallelEdge*> swepline (axisParallelEdgeCmp, -1);
-		Rectangle *sentinel = new Rectangle (Point (min, min), Point (max, max), -1);
+		Rectangle *sentinel = new Rectangle (Point (-DBL_MAX/2, -DBL_MAX/2), Point (DBL_MAX/2, DBL_MAX/2), -1);
 		swepline.insert (new AxisParallelEdge(sentinel, BOTTOM_SIDE));
 
 		for (int i = 0; i < 2*n; i++) {
