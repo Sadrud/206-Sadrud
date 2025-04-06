@@ -10,7 +10,7 @@
 #include <arpa/inet.h>
 #include <cstdint>
 
-const int PORT = 3490;
+const int PORT = 8080;
 const size_t CHUNK_SIZE = 65536;
 
 uint64_t htonll(uint64_t value) {
@@ -84,9 +84,6 @@ class FileClient {
 			auto file_size = file.tellg();
 			file.seekg(0);
 
-			//int64_t net_size = htonll(file_size);
-			//send_all(sock_.get(), reinterpret_cast<char*>(&net_size), sizeof(net_size));
-
 			std::vector<char> buffer(CHUNK_SIZE);
 			while (file.read(buffer.data(), buffer.size())) {
 				size_t bytes_read = file.gcount();
@@ -106,11 +103,9 @@ class FileClient {
 			std::vector<char> buffer(CHUNK_SIZE);
 			while (true) {
 				ssize_t bytes_received = recv(sock_.get(), buffer.data(), buffer.size(), 0);
-				std::cout << "z nen" << std::endl;
 				if (bytes_received <= 0) break;
 				file.write(buffer.data(), bytes_received);
 			}
-			std::cout << "z nen" << std::endl;
 		}
 
 	private:

@@ -1,26 +1,59 @@
-If the operand is not bool, it is converted to bool using contextual conversion to bool: it is only well-formed if the declaration bool t(arg) is well-formed, for some invented temporary t.
+Global English
 
-The result is a bool prvalue.
+English is one of the most important languages in the world. It is used in many countries for communication, business, science, and entertainment. Today, more than 1.5 billion people speak English—some as their first language, others as a second or foreign language.
 
-For the built-in logical NOT operator, the result is true if the operand is false. Otherwise, the result is false.
+Why is English a Global Language?
+History – The British Empire spread English to many countries. Later, the USA became a powerful nation, making English even more popular.
 
-For the built-in logical AND operator, the result is true if both operands are true. Otherwise, the result is false. This operator is short-circuiting: if the first operand is false, the second operand is not evaluated.
+Business & Technology – Many companies use English for international work. The internet, computers, and smartphones mostly use English words.
 
-For the built-in logical OR operator, the result is true if either the first or the second operand (or both) is true. This operator is short-circuiting: if the first operand is true, the second operand is not evaluated.
+Media & Culture – Popular movies, songs, and books are often in English. People learn English to understand them better.
 
-Note that bitwise logic operators do not perform short-circuiting.
+Where is English Spoken?
+English is the official language in countries like the UK, USA, Canada, Australia, and India. It is also widely spoken in places like Singapore, Nigeria, and the Philippines. Even in countries where English is not the main language, many people learn it in school.
 
-Because the short-circuiting properties of operator&& and operator|| do not apply to overloads, and because types with boolean semantics are uncommon, only two standard library classes overload these operators:
+The Future of English
+Some experts think English will stay the global language because it is already so common. Others believe languages like Chinese or Spanish may become more important. But for now, English helps people from different countries understand each other.
 
-static_cast converts one type to another related type
-dynamic_cast converts within inheritance hierarchies
-const_cast adds or removes cv-qualifiers
-reinterpret_cast converts type to unrelated type
-C-style cast converts one type to another by a mix of static_cast, const_cast, and reinterpret_cast
-new creates objects with dynamic storage duration
-delete destructs objects previously created by the new expression and releases obtained memory area
-sizeof queries the size of a type
-sizeof... queries the size of a pack (since C++11)
-typeid queries the type information of a type
-noexcept checks if an expression can throw an exception (since C++11)
-alignof queries alignment requirements of a type (since C++11)
+Conclusion
+English connects people around the world. Learning it opens many doors—for travel, work, and making new friends. Whether you need it for studies or fun, English is a useful language to know!
+
+Global English / Английский как глобальный язык
+English:
+English is one of the most important languages in the world. It is used in many countries for communication, business, science, and entertainment. Today, more than 1.5 billion people speak English—some as their first language, others as a second or foreign language.
+
+Why is English a Global Language?
+History – The British Empire spread English to many countries. Later, the USA became a powerful nation, making English even more popular.
+
+Business & Technology – Many companies use English for international work. The internet, computers, and smartphones mostly use English words.
+
+Media & Culture – Popular movies, songs, and books are often in English. People learn English to understand them better.
+
+Where is English Spoken?
+English is the official language in countries like the UK, USA, Canada, Australia, and India. It is also widely spoken in places like Singapore, Nigeria, and the Philippines. Even in countries where English is not the main language, many people learn it in school.
+
+The Future of English
+Some experts think English will stay the global language because it is already so common. Others believe languages like Chinese or Spanish may become more important. But for now, English helps people from different countries understand each other.
+
+Conclusion
+English connects people around the world. Learning it opens many doors—for travel, work, and making new friends. Whether you need it for studies or fun, English is a useful language to know!
+
+Global English / Английский как глобальный язык
+English:
+English is one of the most important languages in the world. It is used in many countries for communication, business, science, and entertainment. Today, more than 1.5 billion people speak English—some as their first language, others as a second or foreign language.
+
+Why is English a Global Language?
+History – The British Empire spread English to many countries. Later, the USA became a powerful nation, making English even more popular.
+
+Business & Technology – Many companies use English for international work. The internet, computers, and smartphones mostly use English words.
+
+Media & Culture – Popular movies, songs, and books are often in English. People learn English to understand them better.
+
+Where is English Spoken?
+English is the official language in countries like the UK, USA, Canada, Australia, and India. It is also widely spoken in places like Singapore, Nigeria, and the Philippines. Even in countries where English is not the main language, many people learn it in school.
+
+The Future of English
+Some experts think English will stay the global language because it is already so common. Others believe languages like Chinese or Spanish may become more important. But for now, English helps people from different countries understand each other.
+
+Conclusion
+English connects people around the world. Learning it opens many doors—for travel, work, and making new friends. Whether you need it for studies or fun, English is a useful language to know!

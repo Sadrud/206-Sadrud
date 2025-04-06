@@ -12,7 +12,7 @@
 #include <signal.h>
 #include <sys/wait.h>
 
-const int PORT = 3490;
+const int PORT = 8080;
 const int BACKLOG = 10;
 const size_t CHUNK_SIZE = 65536;
 
@@ -145,15 +145,12 @@ class FileServer {
 				ssize_t bytes_received = recv(client_socket.get(), buffer.data(), buffer.size(), 0);
 				if (bytes_received <= 0) break;
 				received_data.insert(received_data.end(), buffer.begin(), buffer.begin() + bytes_received);
-				std::cout << "я тут" << std::endl;
 			}
 
-			std::cout << "я тут" << std::endl;
 			if (!received_data.empty()) {
 				process_data(received_data);
 				send_all(client_socket.get(), received_data.data(), received_data.size());
 			}
-			std::cout << "я тут" << std::endl;
 		}
 
 		static void send_all(int sock, const char* data, size_t size) {
