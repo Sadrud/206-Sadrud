@@ -1,8 +1,7 @@
 #include <iostream>
-#include <string>
+#include <fstream>
 #include <vector>
 #include <algorithm>
-#include <cctype>
 #include <memory>
 #include <stdexcept>
 #include <sys/socket.h>
@@ -15,7 +14,7 @@
 
 const int PORT = 3490;
 const int BACKLOG = 10;
-const size_t BUFFER_SIZE = 4096;
+const size_t CHUNK_SIZE = 65536;
 
 class Socket {
 	public:
@@ -38,9 +37,9 @@ class Socket {
 		int fd_ = -1;
 };
 
-class Server {
+class FileServer {
 	public:
-		Server() {
+		FileServer() {
 			setup_signal_handler();
 			create_socket();
 		}
@@ -58,7 +57,7 @@ class Server {
 						get_in_addr(reinterpret_cast<sockaddr*>(&their_addr)),
 						s, sizeof s);
 
-				std::cout << "server: got connection from " << s << std::endl;
+				std::cout << "Connection from " << s << std::endl;
 
 				if (fork() == 0) {
 					sock_.reset();
@@ -133,22 +132,43 @@ class Server {
 			return &(reinterpret_cast<sockaddr_in6*>(sa)->sin6_addr);
 		}
 
-		static void handle_connection(Socket&& client_socket) {
-			std::vector<char> buffer(BUFFER_SIZE);
-			ssize_t bytes_received = recv(client_socket.get(), buffer.data(), buffer.size(), 0);
-			if (bytes_received == -1) return;
-
-			buffer.resize(bytes_received);
-			std::transform(buffer.begin(), buffer.end(), buffer.begin(),
+		static void process_data(std::vector<char>& data) {
+			std::transform(data.begin(), data.end(), data.begin(),
 					[](unsigned char c) { return std::toupper(c); });
+		}
 
-			send(client_socket.get(), buffer.data(), buffer.size(), 0);
+		static void handle_connection(Socket&& client_socket) {
+			std::vector<char> buffer(CHUNK_SIZE);
+			std::vector<char> received_data;
+
+			while (true) {
+				ssize_t bytes_received = recv(client_socket.get(), buffer.data(), buffer.size(), 0);
+				if (bytes_received <= 0) break;
+				received_data.insert(received_data.end(), buffer.begin(), buffer.begin() + bytes_received);
+				std::cout << "я тут" << std::endl;
+			}
+
+			std::cout << "я тут" << std::endl;
+			if (!received_data.empty()) {
+				process_data(received_data);
+				send_all(client_socket.get(), received_data.data(), received_data.size());
+			}
+			std::cout << "я тут" << std::endl;
+		}
+
+		static void send_all(int sock, const char* data, size_t size) {
+			size_t total_sent = 0;
+			while (total_sent < size) {
+				ssize_t sent = send(sock, data + total_sent, size - total_sent, 0);
+				if (sent <= 0) throw std::runtime_error("Send failed");
+				total_sent += sent;
+			}
 		}
 };
 
 int main() {
 	try {
-		Server server;
+		FileServer server;
 		server.run();
 	} catch (const std::exception& e) {
 		std::cerr << "Error: " << e.what() << std::endl;
