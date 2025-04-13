@@ -35,30 +35,29 @@ AxisParallelEdge **buildSchedule (Rectangle r[], int n){
 	return schedule;
 }
 
-extern "C" {
-	List<Edge*>* findContour (Rectangle r[], int n) {
-		AxisParallelEdge **schedule = buildSchedule (r, n);
-		List<Edge*> *segments = new List<Edge*>;
-		Dictionary<AxisParallelEdge*> swepline (axisParallelEdgeCmp, -1);
-		Rectangle *sentinel = new Rectangle (Point (-DBL_MAX/2, -DBL_MAX/2), Point (DBL_MAX/2, DBL_MAX/2), -1);
-		swepline.insert (new AxisParallelEdge(sentinel, BOTTOM_SIDE));
+List<Edge*>* findContour (Rectangle r[], int n) {
+	AxisParallelEdge **schedule = buildSchedule (r, n);
+	List<Edge*> *segments = new List<Edge*>;
+	Dictionary<AxisParallelEdge*> swepline (axisParallelEdgeCmp, -1);
+	Rectangle *sentinel = new Rectangle (Point (-DBL_MAX/2, -DBL_MAX/2), Point (DBL_MAX/2, DBL_MAX/2), -1);
+	swepline.insert (new AxisParallelEdge(sentinel, BOTTOM_SIDE));
 
-		for (int i = 0; i < 2*n; i++) {
-			while (!swepline.isHead()) {
-				swepline.next();
-			}
-			switch (schedule[i]->type) {
-				case LEFT_SIDE:
-					schedule[i]->handleLeftEdge (swepline, segments);
-					break;
-				case RIGHT_SIDE:
-					schedule[i]->handleRightEdge (swepline, segments);
-					break;
-			}
+	for (int i = 0; i < 2*n; i++) {
+		while (!swepline.isHead()) {
+			swepline.next();
 		}
-		for (int i = 0; i < 2*n; i++){ delete schedule[i]; }
-		delete [] schedule;
-		delete sentinel;
-		return segments;
+		switch (schedule[i]->type) {
+			case LEFT_SIDE:
+				schedule[i]->handleLeftEdge (swepline, segments);
+				break;
+			case RIGHT_SIDE:
+				schedule[i]->handleRightEdge (swepline, segments);
+				break;
+		}
 	}
+	for (int i = 0; i < 2*n; i++){ delete schedule[i]; }
+	delete [] schedule;
+	delete sentinel;
+	return segments;
 }
+

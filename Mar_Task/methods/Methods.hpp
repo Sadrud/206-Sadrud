@@ -12,8 +12,7 @@ int axisParallelEdgeCmp (AxisParallelEdge *a, AxisParallelEdge *b);
 template <class T>
 void insertionSort (T a[], int n, int (*cmp) (T, T));
 AxisParallelEdge **buildSchedule (Rectangle r[], int n);
-extern "C" {
 List<Edge*>* findContour (Rectangle r[], int n);
-}
+
 
 #endif
