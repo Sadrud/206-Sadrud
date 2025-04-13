@@ -13,8 +13,8 @@ class Rectangle {
 		
 		Rectangle () {}
 		Rectangle (Point sw_, Point ne_, int id_ = -1) : sw(sw_), ne(ne_), id(id_) {
-			if (sw_ == ne_) throw Exception(3, "Прямоугольник не создается.");
-			if (!(sw < ne)) { throw Exception(3, "Прямоугольник задан неправильно."); }
+			if (sw_ == ne_) { std::cout << sw_.x << ' ' << sw_.y << ' ' << ne_.x << ' ' << ne_.y << std::endl; throw Exception(3, "Прямоугольник не создается."); }
+			if (!(sw < ne)) { std::cout << sw_.x << ' ' << sw_.y << ' ' << ne_.x << ' ' << ne_.y << std::endl;  throw Exception(3, "Прямоугольник задан неправильно."); }
 		}
 		~Rectangle () {}
 		friend std::ostream& operator<< (std::ostream& os, Rectangle& rect) {

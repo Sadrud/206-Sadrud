@@ -20,6 +20,8 @@ class Point {
 		~Point () {}
 		bool operator== (Point& other) { return (abs(x, other.x) <= epsilon || abs(y, other.y) <= epsilon); }
 		bool operator< (Point& other) { return  ((x < other.x) || (y < other.y)); }
+		//double x() { return x; }
+		//double y() { return y; }
 };
 
 #endif

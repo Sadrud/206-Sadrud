@@ -1,6 +1,7 @@
 #ifndef LIST_HPP
 #define LIST_HPP
 
+#include <vector>
 #include "BraidedNode.hpp"
 
 template <class T>
@@ -48,6 +49,17 @@ class List {
 		bool isLast ();
 		bool isHead ();
 		void print (const std::string& filename);
+		template <class U>
+			void save_vector(std::vector<U>& data) {
+				first();
+
+				for (int i = 0; i < length(); i++, next()) {
+					data.push_back(window_->val_->org_x());
+					data.push_back(window_->val_->org_y());
+					data.push_back(window_->val_->dest_x());
+					data.push_back(window_->val_->dest_y());
+				}
+			}
 };	
 
 template <class T>
@@ -71,11 +83,11 @@ void List<T>::print (const std::string& filename) {
 	first();
 	std::string folder = "input";
 
-	#ifdef _WIN32
-		mkdir(folder.c_str());
-	#else
-		mkdir(folder.c_str(), 0777);
-	#endif
+#ifdef _WIN32
+	mkdir(folder.c_str());
+#else
+	mkdir(folder.c_str(), 0777);
+#endif
 
 	std::string filepath = folder + "/" + filename;
 	std::ofstream out (filepath, std::ios::app);

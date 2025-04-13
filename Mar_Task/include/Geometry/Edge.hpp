@@ -15,6 +15,11 @@ class Edge {
 			return os;
 		}
 		void print () { std::cout << "Edge: (" << org.x << ", " << org.y << ") -> (" << dest.x << ", " << dest.y << ")" << std::endl; }
+		double org_x() { return org.x; }
+		double org_y() { return org.y; }
+		double dest_x() { return dest.x; }
+		double dest_y() { return dest.y; }
+		
 };
 
 
