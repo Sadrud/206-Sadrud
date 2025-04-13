@@ -1,5 +1,5 @@
 #include <fstream>
-double eps = 1e-10;
+double eps = 0;
 
 int cmp (int* a, int* b) {
 	if (&a > &b) return 1;
