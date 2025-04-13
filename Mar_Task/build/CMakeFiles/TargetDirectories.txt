@@ -1,0 +1,7 @@
+/home/sadrudin/206-Sadrud/Mar_Task/build/CMakeFiles/clean_inputs.dir
+/home/sadrudin/206-Sadrud/Mar_Task/build/CMakeFiles/my_project.dir
+/home/sadrudin/206-Sadrud/Mar_Task/build/CMakeFiles/server.dir
+/home/sadrudin/206-Sadrud/Mar_Task/build/CMakeFiles/client.dir
+/home/sadrudin/206-Sadrud/Mar_Task/build/CMakeFiles/run_analysis.dir
+/home/sadrudin/206-Sadrud/Mar_Task/build/CMakeFiles/edit_cache.dir
+/home/sadrudin/206-Sadrud/Mar_Task/build/CMakeFiles/rebuild_cache.dir

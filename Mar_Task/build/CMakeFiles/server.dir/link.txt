@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/server.dir/Server/server.cpp.o CMakeFiles/server.dir/include/Data_Structures/Node.cpp.o CMakeFiles/server.dir/methods/Methods.cpp.o CMakeFiles/server.dir/include/Geometry/Axis_Parallel_Edge.cpp.o -o server 
