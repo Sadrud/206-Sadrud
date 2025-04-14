@@ -1,3 +1,11 @@
+/*!
+  	\file Methods.cpp
+  	\brief Обработка геометрических данных (прямоугольники и контуры)
+	Реализация методов из файла Methods.hpp
+  	\author Sadrud
+  	\date 2025
+  */
+
 #include "Methods.hpp"
 
 int axisParallelEdgeCmp (AxisParallelEdge *a, AxisParallelEdge *b) {

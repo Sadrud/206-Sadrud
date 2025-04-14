@@ -47,12 +47,6 @@ add_executable(my_project ${SOURCES})
 add_executable(server ${SERVER})
 add_executable(client ${CLIENT})
 
-add_custom_command(
-	TARGET client
-	POST_BUILD
-	COMMAND client 127.0.0.1 3
-	)
-
 add_custom_target(run_analysis
 	COMMAND ${Python_EXECUTABLE} 
 	${CMAKE_SOURCE_DIR}/Client/visual.py

@@ -1,3 +1,7 @@
+/**
+ * @brief TCP-клиент для передачи файлов
+ */
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -22,6 +26,11 @@ const size_t CHUNK_SIZE = 65536;
 
 namespace fs = std::filesystem;
 
+/**
+ * @brief Обход всех файлов в папке
+ * @param[in] folder_path Название папки
+ * @return Возвращает вектор из файлов, находящихся в папке
+ */
 std::vector<fs::path> get_files_in_directory(const std::string& folder_path) {
 	std::vector<fs::path> files;
 
@@ -32,6 +41,11 @@ std::vector<fs::path> get_files_in_directory(const std::string& folder_path) {
 	return files;
 }
 
+/**
+ * @brief Конвертация строки в вектор из double
+ * @param[in] str Строка, хранящая координаты точек
+ * @return Возвращает вектор из чисел
+ */
 std::vector<double> convert_string_to_double (const std::string& str) {
 	std::vector<double> numbers;
 	std::stringstream ss(str);
@@ -42,6 +56,10 @@ std::vector<double> convert_string_to_double (const std::string& str) {
 	return numbers;
 }
 
+/**
+ * @brief Запись вектора из чисел в файл специальным образом: 4 числа в строке
+ * @param[in] filename, vec Название файла, куда записываем и вектор, откуда записываем
+ */
 void write_in_file (const std::string& filename, std::vector<double> vec) {
 	std::ofstream outfile(filename, std::ios::app);
 	if (!outfile) throw std::runtime_error("Cannot create output file");
@@ -56,13 +74,33 @@ void write_in_file (const std::string& filename, std::vector<double> vec) {
 	}
 }
 
+/*
+ * @class Socket
+ * @brief Сокет
+ */
 class Socket {
 	public:
+		/**
+		 * @brief Создание сокета
+		 * @param[in] fd Дискриптор
+		 */
 		Socket(int fd) : fd_(fd) {}
+		/**
+		 * @brief Удаление сокета и закрытие дискриптора
+		 */
 		~Socket() { if (fd_ != -1) close(fd_); }
-		Socket(const Socket&) = delete;
-		Socket& operator=(const Socket&) = delete;
+		Socket(const Socket&) = delete; ///< Запрет вызова конструктора копирования
+		Socket& operator=(const Socket&) = delete; ///< Запрет присваивания
+		/**
+		 * @brief 'Отключение' второго сокета и присваивание второго изначальному
+		 * @param[in] other Другой сокет
+		 */
 		Socket(Socket&& other) noexcept : fd_(other.fd_) { other.fd_ = -1; }
+		/**
+		 * @brief 'Отключение' второго сокета и присваивание второго изначальному
+		 * @param[in] other Другой сокет
+		 * @return Возвращает себя	
+		 */
 		Socket& operator=(Socket&& other) noexcept {
 			if (this != &other) {
 				fd_ = other.fd_;
@@ -70,15 +108,38 @@ class Socket {
 			}
 			return *this;
 		}
+		/**
+		 * @brief Получение значения дискриптора
+		 * @return Возвращает дискриптор
+		 */
 		int get() const { return fd_; }
-		void reset() { if (fd_ != -1) close(fd_); fd_ = -1; }
+		void reset() { if (fd_ != -1) close(fd_); fd_ = -1; } ///< 'Отключение' сокета, если дискриптор равен -1
 
 	private:
 		int fd_ = -1;
 };
 
+/**
+ * @class FileClient
+ * @brief TCP-клиент для взаимодействия с сервером
+ */
 class FileClient {
 	public:
+		/**
+		 * @brief Конструктор клиента для установки соединения с сервером
+		 * 
+		 * @details Выполняет следующие действия:
+		 * 1. Получает информацию о сервере через getaddrinfo()
+		 * 2. Перебирает все возможные адреса сервера
+		 * 3. Создает сокет и пытается подключиться к серверу
+		 * 4. Освобождает ресурсы после установки соединения
+		 * 
+		 * @param[in] hostname Имя хоста или IP-адрес сервера
+		 * 
+		 * @throw std::runtime_error в случаях:
+		 * - Ошибки получения адресов сервера (getaddrinfo)
+		 * - Неудачного подключения ко всем доступным адресам
+		 */
 		FileClient(const std::string& hostname) {
 			addrinfo hints{}, *servinfo;
 			hints.ai_family = AF_UNSPEC;
@@ -107,6 +168,22 @@ class FileClient {
 			}
 		}
 
+		/**
+		 * @brief Отправляет содержимое файла на сервер
+		 * 
+		 * @details Выполняет следующие действия:
+		 * 1. Открывает указанный файл для чтения
+		 * 2. Читает файл построчно, объединяя строки через пробел
+		 * 3. Отправляет все данные через сокет
+		 * 4. Закрывает соединение на запись (SHUT_WR)
+		 * 
+		 * @param[in] file_path Путь к файлу для отправки
+		 * 
+		 * @throw std::runtime_error в случаях:
+		 * - Невозможности открыть файл
+		 * - Ошибки чтения файла (не достигнут конец файла)
+		 * - Ошибки отправки данных (внутри send_all)
+		 */
 		void send_file(const std::string& file_path) {
 			std::ifstream file(file_path, std::ios::in);
 			if (!file) throw std::runtime_error("Cannot open input file");
@@ -121,6 +198,16 @@ class FileClient {
 			shutdown(sock_.get(), SHUT_WR);
 		}
 
+		/**
+		 * @brief Принимает файл данных от сервера и сохраняет его на диск
+		 * 
+		 * @details Выполняет последовательно:
+		 * 1. Прием данных от сервера чанками фиксированного размера (CHUNK_SIZE)
+		 * 2. Конвертацию полученных строковых данных в вектор чисел
+		 * 3. Сохранение результата в указанный файл
+		 * 
+		 * @param[in] save_path Путь для сохранения файла с полученными данными
+		 */
 		void receive_file(const std::string& save_path) {
 			char buffer[CHUNK_SIZE];
 			std::string data;
@@ -135,7 +222,6 @@ class FileClient {
 			}
 
 			result = convert_string_to_double(data);
-			std::cout << "z nen" << std::endl;
 			write_in_file (save_path, result);
 
 		}
@@ -143,11 +229,25 @@ class FileClient {
 	private:
 		Socket sock_{-1};
 
+		/**
+		 * @brief Отправка сообщения обратно (обертка над функцией send())
+		 * @param[in] sock, vector Передаем дескриптор и строку, хранящую координаты точек вершин всех прямоугольников
+		 */
 		static void send_all(int sock, std::string vector){
 			ssize_t sent = send(sock, vector.c_str(), vector.length(), 0);
 			if (sent <= 0) throw std::runtime_error("Send failed");
 		}
 
+		/**
+		 * @brief Получает указатель на IP-адрес в структуре sockaddr
+		 *
+		 * @details Функция определяет тип адреса (IPv4/IPv6) и возвращает указатель
+		 * на соответствующее поле с IP-адресом в унифицированном формате.
+		 * @param[in] sa Указатель на структуру sockaddr (может быть sockaddr_in или sockaddr_in6)
+		 * @return Указатель на IP-адрес в виде:
+		 * - struct in_addr* для IPv4 (AF_INET)
+		 * - struct in6_addr* для IPv6 (AF_INET6)
+		 */
 		static void* get_in_addr(sockaddr* sa) {
 			if (sa->sa_family == AF_INET) {
 				return &(reinterpret_cast<sockaddr_in*>(sa)->sin_addr);
@@ -156,6 +256,17 @@ class FileClient {
 		}
 };
 
+/**
+ * @brief Функция, которая будет запускаться в отдельном потоке (для тестирования подключения многих клиентов)
+ * @details Функция:
+ * 1. Инициализирует переменные, создающие произвольные числа
+ * 2. Создает тесты с помощью функций, из файла ../tests/clientTests.cpp
+ * 3. Определяет файлы, в которых хранятся числа
+ * 4. Создает несколько клиентов в цикле для обработки всех файлов из папки (каждая папка обрабатывается в отдельном потоке)
+ * 5. Оповещает об записи полученных данных с сервера в файл
+ *
+ * @param[in] hostname, folder_path IP сервера и название папки, в которой хранятся файлы с числами
+ */
 void client_thread_func(const std::string& hostname, const std::string& folder_path) {
 	try {
 		std::random_device rd1;
@@ -192,7 +303,9 @@ void client_thread_func(const std::string& hostname, const std::string& folder_p
 	}
 }
 
-
+/**
+ * @brief Запуск сервера
+ */
 int main(int argc, char* argv[]) {
 	if (argc != 3) {
 		std::cerr << "Usage: " << argv[0] << " <hostname>, <quantity of clients>\n";
