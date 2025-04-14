@@ -1,0 +1,59 @@
+\hypertarget{testsCreate_8cpp}{}\doxysection{tests/tests\+Create.cpp File Reference}
+\label{testsCreate_8cpp}\index{tests/testsCreate.cpp@{tests/testsCreate.cpp}}
+
+
+Создание тестов.  
+
+
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$random$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+Include dependency graph for tests\+Create.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{testsCreate_8cpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{testsCreate_8cpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{testsCreate_8cpp_ac12e1ec920609efaee7997a91e462051}{random\+Tests}} (const std\+::string \&folder, const std\+::string \&file, int quantity, int spread, int area)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{testsCreate_8cpp_a974b448c3d0a13d483d36ef15de369b5}\label{testsCreate_8cpp_a974b448c3d0a13d483d36ef15de369b5}} 
+double \mbox{\hyperlink{testsCreate_8cpp_a974b448c3d0a13d483d36ef15de369b5}{eps}} = 1e-\/1
+\begin{DoxyCompactList}\small\item\em Малое число, чтобы при генерации пары точек, они не находились на одной прямой, параллельной осям координат. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Создание тестов. 
+
+\begin{DoxyAuthor}{Author}
+Sadrud 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{testsCreate_8cpp_ac12e1ec920609efaee7997a91e462051}\label{testsCreate_8cpp_ac12e1ec920609efaee7997a91e462051}} 
+\index{testsCreate.cpp@{testsCreate.cpp}!randomTests@{randomTests}}
+\index{randomTests@{randomTests}!testsCreate.cpp@{testsCreate.cpp}}
+\doxysubsubsection{\texorpdfstring{randomTests()}{randomTests()}}
+{\footnotesize\ttfamily void random\+Tests (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{folder,  }\item[{const std\+::string \&}]{file,  }\item[{int}]{quantity,  }\item[{int}]{spread,  }\item[{int}]{area }\end{DoxyParamCaption})}
+
+/brief Функция для создания рандомных прямоугольников /param\mbox{[}in\mbox{]} folder, file, quantity, spread, area Название папки, в которой хранится файл, количество прямоугольников, разброс по оси координат и максимальное растояние между двумя точками.. Функция создает папку, в которой будут хранится файлы со значениями вершин прямоугольков. Вершины прямоугольков расставлены по часовой стрелке, начиная с левого нижнего угла. В строке расположены 8 чисел, которые образуют 4 точки. Происходит запись чисел построчно. 
+
+Definition at line 21 of file tests\+Create.\+cpp.
+

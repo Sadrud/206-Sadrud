@@ -1,0 +1,255 @@
+\hypertarget{classFileServer}{}\doxysection{File\+Server Class Reference}
+\label{classFileServer}\index{FileServer@{FileServer}}
+
+
+TCP-\/сервер для обработки прямоугольников  
+
+
+
+
+Collaboration diagram for File\+Server\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=145pt]{classFileServer__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classFileServer_acf61e415a20375b9c9aec30b1a4abcc8}{File\+Server}} ()
+\item 
+void \mbox{\hyperlink{classFileServer_a9466597cc0e05453a7299d7177186af8}{run}} ()
+\begin{DoxyCompactList}\small\item\em Основной цикл работы сервера \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classFileServer_a0d7db94979a553f4daaa40b47bcb0acf}{setup\+\_\+signal\+\_\+handler}} ()
+\begin{DoxyCompactList}\small\item\em Настраивает обработчик сигнала SIGCHLD для автоматического завершения дочерних процессов. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classFileServer_a9125de95baa81e2eece8d624746cdf69}{create\+\_\+socket}} ()
+\begin{DoxyCompactList}\small\item\em Создает и настраивает серверный сокет для принятия подключений \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void $\ast$ \mbox{\hyperlink{classFileServer_ab7abdeff3bdf74ae258f3ca57be3e136}{get\+\_\+in\+\_\+addr}} (sockaddr $\ast$sa)
+\begin{DoxyCompactList}\small\item\em Получает указатель на IP-\/адрес в структуре sockaddr. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classFileServer_a926f7f6a93cded39b78759ae329561d0}{process\+\_\+data}} (std\+::vector$<$ double $>$ \&data)
+\begin{DoxyCompactList}\small\item\em Производит вычисления и находит контур объединения прямоугольников, переданных от клиента \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classFileServer_a79cec13d750892c74bd57852ccb1dc3d}{handle\+\_\+connection}} (\mbox{\hyperlink{classSocket}{Socket}} \&\&client\+\_\+socket)
+\begin{DoxyCompactList}\small\item\em Обрабатывает соединение с клиентом \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classFileServer_ad8e80e035edf7bf2db4d6d1f17945754}{send\+\_\+all}} (int sock, std\+::string data)
+\begin{DoxyCompactList}\small\item\em Отправка сообщения обратно (обертка над функцией send()) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFileServer_a52167bc1ed2c849f81ce61e44c065128}\label{classFileServer_a52167bc1ed2c849f81ce61e44c065128}} 
+\mbox{\hyperlink{classSocket}{Socket}} \mbox{\hyperlink{classFileServer_a52167bc1ed2c849f81ce61e44c065128}{sock\+\_\+}} \{-\/1\}
+\begin{DoxyCompactList}\small\item\em Создание сокета \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+TCP-\/сервер для обработки прямоугольников 
+
+Definition at line 106 of file server.\+cpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classFileServer_acf61e415a20375b9c9aec30b1a4abcc8}\label{classFileServer_acf61e415a20375b9c9aec30b1a4abcc8}} 
+\index{FileServer@{FileServer}!FileServer@{FileServer}}
+\index{FileServer@{FileServer}!FileServer@{FileServer}}
+\doxysubsubsection{\texorpdfstring{FileServer()}{FileServer()}}
+{\footnotesize\ttfamily File\+Server\+::\+File\+Server (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+$<$ Конструктор сервера
+
+Definition at line 108 of file server.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classFileServer_a9125de95baa81e2eece8d624746cdf69}\label{classFileServer_a9125de95baa81e2eece8d624746cdf69}} 
+\index{FileServer@{FileServer}!create\_socket@{create\_socket}}
+\index{create\_socket@{create\_socket}!FileServer@{FileServer}}
+\doxysubsubsection{\texorpdfstring{create\_socket()}{create\_socket()}}
+{\footnotesize\ttfamily void File\+Server\+::create\+\_\+socket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Создает и настраивает серверный сокет для принятия подключений 
+
+Выполняет последовательно\+:
+\begin{DoxyEnumerate}
+\item Получение информации о доступных адресах через getaddrinfo()
+\item Создание сокета для каждого возможного адреса
+\item Установка опции SO\+\_\+\+REUSEADDR для быстрого переиспользования порта
+\item Привязка сокета к адресу (bind)
+\item Перевод сокета в режим прослушивания (listen)
+\end{DoxyEnumerate}
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & в случаях\+:
+\begin{DoxyItemize}
+\item Ошибки получения адресов (getaddrinfo)
+\begin{DoxyItemize}
+\item Неудачной привязки сокета (bind)
+\item Ошибки перевода в режим прослушивания (listen) 
+\end{DoxyItemize}
+\end{DoxyItemize}\\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 188 of file server.\+cpp.
+
+\mbox{\Hypertarget{classFileServer_ab7abdeff3bdf74ae258f3ca57be3e136}\label{classFileServer_ab7abdeff3bdf74ae258f3ca57be3e136}} 
+\index{FileServer@{FileServer}!get\_in\_addr@{get\_in\_addr}}
+\index{get\_in\_addr@{get\_in\_addr}!FileServer@{FileServer}}
+\doxysubsubsection{\texorpdfstring{get\_in\_addr()}{get\_in\_addr()}}
+{\footnotesize\ttfamily static void$\ast$ File\+Server\+::get\+\_\+in\+\_\+addr (\begin{DoxyParamCaption}\item[{sockaddr $\ast$}]{sa }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Получает указатель на IP-\/адрес в структуре sockaddr. 
+
+Функция определяет тип адреса (IPv4/\+IPv6) и возвращает указатель на соответствующее поле с IP-\/адресом в унифицированном формате. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em sa} & Указатель на структуру sockaddr (может быть sockaddr\+\_\+in или sockaddr\+\_\+in6) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Указатель на IP-\/адрес в виде\+:
+\begin{DoxyItemize}
+\item struct in\+\_\+addr$\ast$ для IPv4 (AF\+\_\+\+INET)
+\item struct in6\+\_\+addr$\ast$ для IPv6 (AF\+\_\+\+INET6) 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+Definition at line 243 of file server.\+cpp.
+
+\mbox{\Hypertarget{classFileServer_a79cec13d750892c74bd57852ccb1dc3d}\label{classFileServer_a79cec13d750892c74bd57852ccb1dc3d}} 
+\index{FileServer@{FileServer}!handle\_connection@{handle\_connection}}
+\index{handle\_connection@{handle\_connection}!FileServer@{FileServer}}
+\doxysubsubsection{\texorpdfstring{handle\_connection()}{handle\_connection()}}
+{\footnotesize\ttfamily static void File\+Server\+::handle\+\_\+connection (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSocket}{Socket}} \&\&}]{client\+\_\+socket }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Обрабатывает соединение с клиентом 
+
+Функция выполняет\+:
+\begin{DoxyEnumerate}
+\item Прием данных от клиента чанками фиксированного размера
+\item Конвертацию полученных строковых данных в числовой формат
+\item Обработку данных через \mbox{\hyperlink{classFileServer_a926f7f6a93cded39b78759ae329561d0}{process\+\_\+data()}}
+\item Отправку результата обратно клиенту
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em client\+\_\+socket} & Сокет клиента (передается по rvalue-\/ссылке) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 289 of file server.\+cpp.
+
+\mbox{\Hypertarget{classFileServer_a926f7f6a93cded39b78759ae329561d0}\label{classFileServer_a926f7f6a93cded39b78759ae329561d0}} 
+\index{FileServer@{FileServer}!process\_data@{process\_data}}
+\index{process\_data@{process\_data}!FileServer@{FileServer}}
+\doxysubsubsection{\texorpdfstring{process\_data()}{process\_data()}}
+{\footnotesize\ttfamily static void File\+Server\+::process\+\_\+data (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$ \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Производит вычисления и находит контур объединения прямоугольников, переданных от клиента 
+
+Выполняется следующее\+:
+\begin{DoxyEnumerate}
+\item Передается вектор значений
+\item Вектор обрабатывается и определяются вершины прямоугольника
+\item Создается и заполняется массив прямоугольников
+\item Выполняется основноц алгоритм нахождения контура объединения прямоугольников
+\item Контур записывается в список в виде ребер
+\item Возвращается изменный вектор
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em data} & Вектор из чисел, которые являются координатами точек вершин прямоугольника. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 262 of file server.\+cpp.
+
+\mbox{\Hypertarget{classFileServer_a9466597cc0e05453a7299d7177186af8}\label{classFileServer_a9466597cc0e05453a7299d7177186af8}} 
+\index{FileServer@{FileServer}!run@{run}}
+\index{run@{run}!FileServer@{FileServer}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void File\+Server\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Основной цикл работы сервера 
+
+Выполняет следующие действия в бесконечном цикле\+:
+\begin{DoxyEnumerate}
+\item Принимает входящие соединения через accept()
+\item Определяет IP-\/адрес клиента
+\item Создает дочерний процесс для обработки соединения
+\item В дочернем процессе вызывает обработчик соединения 
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::exception} & Может пробросить исключения из\+:\\
+\hline
+\end{DoxyExceptions}
+
+\end{DoxyEnumerate}
+\begin{DoxyItemize}
+\item inet\+\_\+ntop()
+\item \mbox{\hyperlink{classFileServer_a79cec13d750892c74bd57852ccb1dc3d}{handle\+\_\+connection()}}
+\item Системные ошибки 
+\end{DoxyItemize}
+
+Definition at line 126 of file server.\+cpp.
+
+\mbox{\Hypertarget{classFileServer_ad8e80e035edf7bf2db4d6d1f17945754}\label{classFileServer_ad8e80e035edf7bf2db4d6d1f17945754}} 
+\index{FileServer@{FileServer}!send\_all@{send\_all}}
+\index{send\_all@{send\_all}!FileServer@{FileServer}}
+\doxysubsubsection{\texorpdfstring{send\_all()}{send\_all()}}
+{\footnotesize\ttfamily static void File\+Server\+::send\+\_\+all (\begin{DoxyParamCaption}\item[{int}]{sock,  }\item[{std\+::string}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Отправка сообщения обратно (обертка над функцией send()) 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em sock,data} & Передаем дескриптор и строку, хранящую координаты точек вершин всех прямоугольников \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 315 of file server.\+cpp.
+
+\mbox{\Hypertarget{classFileServer_a0d7db94979a553f4daaa40b47bcb0acf}\label{classFileServer_a0d7db94979a553f4daaa40b47bcb0acf}} 
+\index{FileServer@{FileServer}!setup\_signal\_handler@{setup\_signal\_handler}}
+\index{setup\_signal\_handler@{setup\_signal\_handler}!FileServer@{FileServer}}
+\doxysubsubsection{\texorpdfstring{setup\_signal\_handler()}{setup\_signal\_handler()}}
+{\footnotesize\ttfamily void File\+Server\+::setup\+\_\+signal\+\_\+handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Настраивает обработчик сигнала SIGCHLD для автоматического завершения дочерних процессов. 
+
+Функция выполняет следующие действия\+: Создает обработчик сигнала, который вызывает {\ttfamily waitpid()} для всех завершенных дочерних процессов. Использует флаг {\ttfamily SA\+\_\+\+RESTART} для автоматического перезапуска системных вызовов, прерванных сигналом. Устанавливает пустую маску сигналов для обработчика. Регистрирует обработчик для сигнала SIGCHLD. 
+
+Definition at line 163 of file server.\+cpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Server/server.\+cpp\end{DoxyCompactItemize}

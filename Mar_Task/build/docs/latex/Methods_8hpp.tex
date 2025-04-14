@@ -1,0 +1,135 @@
+\hypertarget{Methods_8hpp}{}\doxysection{methods/\+Methods.hpp File Reference}
+\label{Methods_8hpp}\index{methods/Methods.hpp@{methods/Methods.hpp}}
+
+
+Обработка геометрических данных (прямоугольники и контуры)  
+
+
+{\ttfamily \#include \char`\"{}../include/\+Data\+\_\+\+Structures/\+Node.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/\+Geometry/\+Axis\+\_\+\+Parallel\+\_\+\+Edge.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/\+Geometry/\+Edge.\+hpp\char`\"{}}\newline
+Include dependency graph for Methods.\+hpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Methods_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Methods_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{Methods_8hpp_af8d7d5637c0f892115c59072df5a3b33}{axis\+Parallel\+Edge\+Cmp}} (Axis\+Parallel\+Edge $\ast$a, Axis\+Parallel\+Edge $\ast$b)
+\begin{DoxyCompactList}\small\item\em Компаратор -\/ функция для сравнения 2 ребер \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T $>$ }\\void \mbox{\hyperlink{Methods_8hpp_ad473f3e0d67c4fc89a4f7a1816a89da6}{insertion\+Sort}} (T a\mbox{[}$\,$\mbox{]}, int n, int($\ast$cmp)(T, T))
+\begin{DoxyCompactList}\small\item\em Сортировка вставками \end{DoxyCompactList}\item 
+Axis\+Parallel\+Edge $\ast$$\ast$ \mbox{\hyperlink{Methods_8hpp_a77380a2b9529f89797abf9ec606f9976}{build\+Schedule}} (Rectangle r\mbox{[}$\,$\mbox{]}, int n)
+\begin{DoxyCompactList}\small\item\em Построение массива из ребер Построение из множества прямоугольников массива, состоящего из вертикальных ребер прямоугольников \end{DoxyCompactList}\item 
+List$<$ Edge $\ast$ $>$ $\ast$ \mbox{\hyperlink{Methods_8hpp_a6371cfb54ed5f23e0325df2dfd000b6e}{find\+Contour}} (Rectangle r\mbox{[}$\,$\mbox{]}, int n)
+\begin{DoxyCompactList}\small\item\em Основной алгоритм Именно он вычисляет контур объединения прямоугольников. Вначале создается массив из вертикальных ребер прямоугольников. Далее создается список ребер (пустой) и словарь (рандомизированное дерево поиска). Далее сканируюущая линия проходит по всем ребрам из изначального массива прямоугольников. Эффект сканирующей линии создается с помощью цикла и двух специальных методов класса Axis\+Parallel\+Edge. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Обработка геометрических данных (прямоугольники и контуры) 
+
+\begin{DoxyAuthor}{Author}
+Sadrud 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{Methods_8hpp_af8d7d5637c0f892115c59072df5a3b33}\label{Methods_8hpp_af8d7d5637c0f892115c59072df5a3b33}} 
+\index{Methods.hpp@{Methods.hpp}!axisParallelEdgeCmp@{axisParallelEdgeCmp}}
+\index{axisParallelEdgeCmp@{axisParallelEdgeCmp}!Methods.hpp@{Methods.hpp}}
+\doxysubsubsection{\texorpdfstring{axisParallelEdgeCmp()}{axisParallelEdgeCmp()}}
+{\footnotesize\ttfamily int axis\+Parallel\+Edge\+Cmp (\begin{DoxyParamCaption}\item[{Axis\+Parallel\+Edge $\ast$}]{a,  }\item[{Axis\+Parallel\+Edge $\ast$}]{b }\end{DoxyParamCaption})}
+
+
+
+Компаратор -\/ функция для сравнения 2 ребер 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a,b} & Указатели на ребра прямоугольника (ребра одного типа\+: либо вертикальные, либо гоизонтальные) Данный компаратор сравнивание два вертикальных (горизонтальных) ребра по их расположению на оси, которой они перпендикулярны. Если ребра одинаково расположены, то сравнение происходит по второстепенным признакам (левое или правое ребро, индекс прямоугольника, чье это ребро) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Возвращает 1, если первый аргумент больше второго, -\/1 -\/ иначе и 0, если они абсолютно идентичны 
+\end{DoxyReturn}
+
+
+Definition at line 11 of file Methods.\+cpp.
+
+\mbox{\Hypertarget{Methods_8hpp_a77380a2b9529f89797abf9ec606f9976}\label{Methods_8hpp_a77380a2b9529f89797abf9ec606f9976}} 
+\index{Methods.hpp@{Methods.hpp}!buildSchedule@{buildSchedule}}
+\index{buildSchedule@{buildSchedule}!Methods.hpp@{Methods.hpp}}
+\doxysubsubsection{\texorpdfstring{buildSchedule()}{buildSchedule()}}
+{\footnotesize\ttfamily Axis\+Parallel\+Edge$\ast$$\ast$ build\+Schedule (\begin{DoxyParamCaption}\item[{Rectangle}]{r\mbox{[}$\,$\mbox{]},  }\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Построение массива из ребер Построение из множества прямоугольников массива, состоящего из вертикальных ребер прямоугольников 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r,n} & Массив прямоугольников и их количество \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Указатель на массив вертикальных ребер прямоугольников 
+\end{DoxyReturn}
+
+
+Definition at line 36 of file Methods.\+cpp.
+
+\mbox{\Hypertarget{Methods_8hpp_a6371cfb54ed5f23e0325df2dfd000b6e}\label{Methods_8hpp_a6371cfb54ed5f23e0325df2dfd000b6e}} 
+\index{Methods.hpp@{Methods.hpp}!findContour@{findContour}}
+\index{findContour@{findContour}!Methods.hpp@{Methods.hpp}}
+\doxysubsubsection{\texorpdfstring{findContour()}{findContour()}}
+{\footnotesize\ttfamily List$<$Edge$\ast$$>$$\ast$ find\+Contour (\begin{DoxyParamCaption}\item[{Rectangle}]{r\mbox{[}$\,$\mbox{]},  }\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Основной алгоритм Именно он вычисляет контур объединения прямоугольников. Вначале создается массив из вертикальных ребер прямоугольников. Далее создается список ребер (пустой) и словарь (рандомизированное дерево поиска). Далее сканируюущая линия проходит по всем ребрам из изначального массива прямоугольников. Эффект сканирующей линии создается с помощью цикла и двух специальных методов класса Axis\+Parallel\+Edge. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r,n} & Массив прямоугольников и их количество \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Возвращает указатель на список из ребер (уже обычных ребер, которые представляются 2 парами точек на плоскости и параллельны осям координат) 
+\end{DoxyReturn}
+
+
+Definition at line 46 of file Methods.\+cpp.
+
+\mbox{\Hypertarget{Methods_8hpp_ad473f3e0d67c4fc89a4f7a1816a89da6}\label{Methods_8hpp_ad473f3e0d67c4fc89a4f7a1816a89da6}} 
+\index{Methods.hpp@{Methods.hpp}!insertionSort@{insertionSort}}
+\index{insertionSort@{insertionSort}!Methods.hpp@{Methods.hpp}}
+\doxysubsubsection{\texorpdfstring{insertionSort()}{insertionSort()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void insertion\+Sort (\begin{DoxyParamCaption}\item[{T}]{a\mbox{[}$\,$\mbox{]},  }\item[{int}]{n,  }\item[{int($\ast$)(T, T)}]{cmp }\end{DoxyParamCaption})}
+
+
+
+Сортировка вставками 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a,n,cmp} & Массив, который хотим отсортировать, количесвто в нем элементов и компаратор Шаблонная функция для сортировки вставками \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 23 of file Methods.\+cpp.
+
