@@ -1,0 +1,93 @@
+\hypertarget{server_8cpp}{}\doxysection{Файл server/server.cpp}
+\label{server_8cpp}\index{server/server.cpp@{server/server.cpp}}
+
+
+Основной модуль TCP-\/сервера для обработки геометрических данных  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$sys/socket.\+h$>$}\newline
+{\ttfamily \#include $<$netinet/in.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$arpa/inet.\+h$>$}\newline
+{\ttfamily \#include $<$netdb.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include $<$sys/wait.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include \char`\"{}../methods/methods.\+cpp\char`\"{}}\newline
+Граф включаемых заголовочных файлов для server.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{server_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Классы}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classSocket}{Socket}}
+\begin{DoxyCompactList}\small\item\em Сокет \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classFileServer}{File\+Server}}
+\begin{DoxyCompactList}\small\item\em TCP-\/сервер для обработки прямоугольников \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{server_8cpp_a18a4d0312ba83edee5637b8b5880c627}{convert\+\_\+string\+\_\+to\+\_\+int}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Конвертация строки в вектор из double. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{server_8cpp_a740785854229ee6bfc14cf82d66ab311}{convert\+\_\+int\+\_\+to\+\_\+string}} (const std\+::vector$<$ int $>$ \&vec)
+\begin{DoxyCompactList}\small\item\em Конвертация чисел в string. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{server_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{server_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+int \mbox{\hyperlink{server_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Запуск сервера \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Основной модуль TCP-\/сервера для обработки геометрических данных 
+
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{server_8cpp_a740785854229ee6bfc14cf82d66ab311}\label{server_8cpp_a740785854229ee6bfc14cf82d66ab311}} 
+\index{server.cpp@{server.cpp}!convert\_int\_to\_string@{convert\_int\_to\_string}}
+\index{convert\_int\_to\_string@{convert\_int\_to\_string}!server.cpp@{server.cpp}}
+\doxysubsubsection{\texorpdfstring{convert\_int\_to\_string()}{convert\_int\_to\_string()}}
+{\footnotesize\ttfamily std\+::string convert\+\_\+int\+\_\+to\+\_\+string (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ int $>$ \&}]{vec }\end{DoxyParamCaption})}
+
+
+
+Конвертация чисел в string. 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em vec} & Набор чисел \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле server.\+cpp строка 44
+
+\mbox{\Hypertarget{server_8cpp_a18a4d0312ba83edee5637b8b5880c627}\label{server_8cpp_a18a4d0312ba83edee5637b8b5880c627}} 
+\index{server.cpp@{server.cpp}!convert\_string\_to\_int@{convert\_string\_to\_int}}
+\index{convert\_string\_to\_int@{convert\_string\_to\_int}!server.cpp@{server.cpp}}
+\doxysubsubsection{\texorpdfstring{convert\_string\_to\_int()}{convert\_string\_to\_int()}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ convert\+\_\+string\+\_\+to\+\_\+int (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Конвертация строки в вектор из double. 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em str} & Строка, хранящая координаты точек \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле server.\+cpp строка 31
+

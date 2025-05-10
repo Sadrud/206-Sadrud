@@ -1,0 +1,4 @@
+<map id="FileClient" name="FileClient">
+<area shape="rect" id="node1" title="TCP&#45;клиент для взаимодействия с сервером" alt="" coords="5,95,88,121"/>
+<area shape="rect" id="node2" href="$classSocket.html" title="Сокет" alt="" coords="14,5,79,32"/>
+</map>

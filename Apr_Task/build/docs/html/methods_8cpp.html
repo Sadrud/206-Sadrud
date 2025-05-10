@@ -1,0 +1,320 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>graph: Файл methods/methods.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">graph
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_704eb8350b43e1ca74c0f90ed1ba450e.html">methods</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Функции</a>  </div>
+  <div class="headertitle">
+<div class="title">Файл methods.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Основные методы для вычислений..  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;stack&gt;</code><br />
+<code>#include &lt;random&gt;</code><br />
+<code>#include &lt;ctime&gt;</code><br />
+<code>#include &lt;sys/stat.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Граф включаемых заголовочных файлов для methods.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="methods_8cpp__incl.png" border="0" usemap="#amethods_2methods_8cpp" alt=""/></div>
+<map name="amethods_2methods_8cpp" id="amethods_2methods_8cpp">
+<area shape="rect" title="Основные методы для вычислений.." alt="" coords="197,5,363,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,85,107"/>
+<area shape="rect" title=" " alt="" coords="110,80,183,107"/>
+<area shape="rect" title=" " alt="" coords="207,80,265,107"/>
+<area shape="rect" title=" " alt="" coords="289,80,361,107"/>
+<area shape="rect" title=" " alt="" coords="385,80,444,107"/>
+<area shape="rect" title=" " alt="" coords="468,80,553,107"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Граф файлов, в которые включается этот файл:</div>
+<div class="dyncontent">
+<div class="center"><img src="methods_8cpp__dep__incl.png" border="0" usemap="#amethods_2methods_8cppdep" alt=""/></div>
+<map name="amethods_2methods_8cppdep" id="amethods_2methods_8cppdep">
+<area shape="rect" title="Основные методы для вычислений.." alt="" coords="147,5,313,32"/>
+<area shape="rect" href="tests_8cpp.html" title="Создание тестов." alt="" coords="97,80,214,107"/>
+<area shape="rect" href="server_8cpp.html" title="Основной модуль TCP&#45;сервера для обработки геометрических данных" alt="" coords="239,80,373,107"/>
+<area shape="rect" href="main_8cpp_source.html" title=" " alt="" coords="5,155,148,181"/>
+<area shape="rect" href="client_8cpp.html" title="TCP&#45;клиент для передачи файлов" alt="" coords="173,155,298,181"/>
+</map>
+</div>
+</div>
+<p><a href="methods_8cpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:ab4616a23a2c7ae560316ce8420db30ea"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="methods_8cpp.html#ab4616a23a2c7ae560316ce8420db30ea">generateAdjacencyMatrix</a> (int vertices, float maxDensity, int maxEdges)</td></tr>
+<tr class="memdesc:ab4616a23a2c7ae560316ce8420db30ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Создание рандомной матрицы смежности (по сути создание рандомного графа)  <a href="methods_8cpp.html#ab4616a23a2c7ae560316ce8420db30ea">Подробнее...</a><br /></td></tr>
+<tr class="separator:ab4616a23a2c7ae560316ce8420db30ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52f74b815271fc6a17cad3ffea236eb6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="methods_8cpp.html#a52f74b815271fc6a17cad3ffea236eb6">printMatrix</a> (std::string &amp;folder, std::string &amp;file, const std::vector&lt; std::vector&lt; int &gt;&gt; &amp;g)</td></tr>
+<tr class="memdesc:a52f74b815271fc6a17cad3ffea236eb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Печать матрицы  <a href="methods_8cpp.html#a52f74b815271fc6a17cad3ffea236eb6">Подробнее...</a><br /></td></tr>
+<tr class="separator:a52f74b815271fc6a17cad3ffea236eb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad242e5a6b60f9b5510abbd2b2d70dc6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="methods_8cpp.html#ad242e5a6b60f9b5510abbd2b2d70dc6f">printVector</a> (std::string &amp;folder, std::string &amp;file, const std::vector&lt; int &gt; &amp;g)</td></tr>
+<tr class="memdesc:ad242e5a6b60f9b5510abbd2b2d70dc6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Печать вектора (эйлерового пути)  <a href="methods_8cpp.html#ad242e5a6b60f9b5510abbd2b2d70dc6f">Подробнее...</a><br /></td></tr>
+<tr class="separator:ad242e5a6b60f9b5510abbd2b2d70dc6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cdd67ac9e9729cf248b6248fdd7254b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="methods_8cpp.html#a1cdd67ac9e9729cf248b6248fdd7254b">FindEulerPath</a> (int n, std::vector&lt; std::vector&lt; int &gt;&gt; g)</td></tr>
+<tr class="memdesc:a1cdd67ac9e9729cf248b6248fdd7254b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Основной метод - нахождение эйлерового пути в графе \Функция работает с матрицей смежности графа. \Сначала она проверяет, существует ли вообще эйлеров путь (также и эйлеров цикл). \Далее она выбирает произвольную вершину, и начиная с нее уже начинает бегать по графу. Обязательно она найдет какой-либо путь (необязательно эйлеров). \И, в итоге, имея путь, функция опять проходит по всем вершинам этого пути, и вычитает ребро из матрицы смежности, и проделывает так, пока не пройдет путь. \Если получилась нулевая матрица, по найденный путь эйлеров, иначе нет.  <a href="methods_8cpp.html#a1cdd67ac9e9729cf248b6248fdd7254b">Подробнее...</a><br /></td></tr>
+<tr class="separator:a1cdd67ac9e9729cf248b6248fdd7254b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Основные методы для вычислений.. </p>
+<dl class="section author"><dt>Автор</dt><dd>Sadrud </dd></dl>
+<dl class="section date"><dt>Дата</dt><dd>2025 </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="methods_8cpp_source.html">methods.cpp</a></p>
+</div><h2 class="groupheader">Функции</h2>
+<a id="a1cdd67ac9e9729cf248b6248fdd7254b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cdd67ac9e9729cf248b6248fdd7254b">&#9670;&nbsp;</a></span>FindEulerPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;int&gt; FindEulerPath </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::vector&lt; int &gt;&gt;&#160;</td>
+          <td class="paramname"><em>g</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Основной метод - нахождение эйлерового пути в графе \Функция работает с матрицей смежности графа. \Сначала она проверяет, существует ли вообще эйлеров путь (также и эйлеров цикл). \Далее она выбирает произвольную вершину, и начиная с нее уже начинает бегать по графу. Обязательно она найдет какой-либо путь (необязательно эйлеров). \И, в итоге, имея путь, функция опять проходит по всем вершинам этого пути, и вычитает ребро из матрицы смежности, и проделывает так, пока не пройдет путь. \Если получилась нулевая матрица, по найденный путь эйлеров, иначе нет. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">n,g</td><td>Количесвто вершин и матрица смежности </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Возвращает вектор, содержащий эйлеров путь </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="methods_8cpp_source.html">methods.cpp</a> строка <a class="el" href="methods_8cpp_source.html#l00103">103</a></p>
+
+</div>
+</div>
+<a id="ab4616a23a2c7ae560316ce8420db30ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4616a23a2c7ae560316ce8420db30ea">&#9670;&nbsp;</a></span>generateAdjacencyMatrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::vector&lt;int&gt; &gt; generateAdjacencyMatrix </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>vertices</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>maxDensity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>maxEdges</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Создание рандомной матрицы смежности (по сути создание рандомного графа) </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">vertices,maxDensity,maxEdges</td><td>Количество вершин в графе, плотность распределения ребер, максимальное количество ребер, выходящее из вершины </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Возвращает сгенерированную матрицу </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="methods_8cpp_source.html">methods.cpp</a> строка <a class="el" href="methods_8cpp_source.html#l00021">21</a></p>
+
+</div>
+</div>
+<a id="a52f74b815271fc6a17cad3ffea236eb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52f74b815271fc6a17cad3ffea236eb6">&#9670;&nbsp;</a></span>printMatrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printMatrix </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>folder</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::vector&lt; int &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>g</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Печать матрицы </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">folder,file,g</td><td>Название папки, в которой хранятся файлы, название файла для хранения матрицы смежности, сама матрица смежности </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="methods_8cpp_source.html">methods.cpp</a> строка <a class="el" href="methods_8cpp_source.html#l00053">53</a></p>
+
+</div>
+</div>
+<a id="ad242e5a6b60f9b5510abbd2b2d70dc6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad242e5a6b60f9b5510abbd2b2d70dc6f">&#9670;&nbsp;</a></span>printVector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printVector </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>folder</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>g</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Печать вектора (эйлерового пути) </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">folder,file,g</td><td>Название папки, в которой хранятся файлы, название файла для хранения эйлерового пути, сам эйлеров путь </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="methods_8cpp_source.html">methods.cpp</a> строка <a class="el" href="methods_8cpp_source.html#l00076">76</a></p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

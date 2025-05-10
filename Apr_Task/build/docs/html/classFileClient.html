@@ -1,0 +1,362 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>graph: Класс FileClient</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">graph
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#pri-static-methods">Закрытые статические члены</a> &#124;
+<a href="classFileClient-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle">
+<div class="title">Класс FileClient</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>TCP-клиент для взаимодействия с сервером  
+ <a href="classFileClient.html#details">Подробнее...</a></p>
+<div class="dynheader">
+Граф связей класса FileClient:</div>
+<div class="dyncontent">
+<div class="center"><img src="classFileClient__coll__graph.png" border="0" usemap="#aFileClient_coll__map" alt="Collaboration graph"/></div>
+<map name="aFileClient_coll__map" id="aFileClient_coll__map">
+<area shape="rect" title="TCP&#45;клиент для взаимодействия с сервером" alt="" coords="5,95,88,121"/>
+<area shape="rect" href="classSocket.html" title="Сокет" alt="" coords="14,5,79,32"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">см. легенду</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a762279acb57e58c01209e39db4977deb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileClient.html#a762279acb57e58c01209e39db4977deb">FileClient</a> (const std::string &amp;hostname)</td></tr>
+<tr class="memdesc:a762279acb57e58c01209e39db4977deb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Конструктор клиента для установки соединения с сервером  <a href="classFileClient.html#a762279acb57e58c01209e39db4977deb">Подробнее...</a><br /></td></tr>
+<tr class="separator:a762279acb57e58c01209e39db4977deb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51866dcd0f54724c77f2ac4f6a88285f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileClient.html#a51866dcd0f54724c77f2ac4f6a88285f">send_file</a> (const std::string &amp;file_path)</td></tr>
+<tr class="memdesc:a51866dcd0f54724c77f2ac4f6a88285f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Отправляет содержимое файла на сервер  <a href="classFileClient.html#a51866dcd0f54724c77f2ac4f6a88285f">Подробнее...</a><br /></td></tr>
+<tr class="separator:a51866dcd0f54724c77f2ac4f6a88285f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2e9090822727de157c73b2015d5ecea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileClient.html#ac2e9090822727de157c73b2015d5ecea">receive_file</a> (const std::string &amp;save_path)</td></tr>
+<tr class="memdesc:ac2e9090822727de157c73b2015d5ecea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Принимает файл данных от сервера и сохраняет его на диск  <a href="classFileClient.html#ac2e9090822727de157c73b2015d5ecea">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac2e9090822727de157c73b2015d5ecea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
+Закрытые статические члены</h2></td></tr>
+<tr class="memitem:a446cdd60b6f6cfd89ea26de4ed5d0288"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileClient.html#a446cdd60b6f6cfd89ea26de4ed5d0288">send_all</a> (int sock, std::string vector)</td></tr>
+<tr class="memdesc:a446cdd60b6f6cfd89ea26de4ed5d0288"><td class="mdescLeft">&#160;</td><td class="mdescRight">Отправка сообщения обратно (обертка над функцией send())  <a href="classFileClient.html#a446cdd60b6f6cfd89ea26de4ed5d0288">Подробнее...</a><br /></td></tr>
+<tr class="separator:a446cdd60b6f6cfd89ea26de4ed5d0288"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51dce0b7cc97890009e41f07f7f5cb7b"><td class="memItemLeft" align="right" valign="top">static void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileClient.html#a51dce0b7cc97890009e41f07f7f5cb7b">get_in_addr</a> (sockaddr *sa)</td></tr>
+<tr class="memdesc:a51dce0b7cc97890009e41f07f7f5cb7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получает указатель на IP-адрес в структуре sockaddr.  <a href="classFileClient.html#a51dce0b7cc97890009e41f07f7f5cb7b">Подробнее...</a><br /></td></tr>
+<tr class="separator:a51dce0b7cc97890009e41f07f7f5cb7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>TCP-клиент для взаимодействия с сервером </p>
+
+<p class="definition">См. определение в файле <a class="el" href="client_8cpp_source.html">client.cpp</a> строка <a class="el" href="client_8cpp_source.html#l00122">122</a></p>
+</div><h2 class="groupheader">Конструктор(ы)</h2>
+<a id="a762279acb57e58c01209e39db4977deb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a762279acb57e58c01209e39db4977deb">&#9670;&nbsp;</a></span>FileClient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FileClient::FileClient </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>hostname</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Конструктор клиента для установки соединения с сервером </p>
+<p>Выполняет следующие действия:</p><ol type="1">
+<li>Получает информацию о сервере через getaddrinfo()</li>
+<li>Перебирает все возможные адреса сервера</li>
+<li>Создает сокет и пытается подключиться к серверу</li>
+<li>Освобождает ресурсы после установки соединения</li>
+</ol>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">hostname</td><td>Имя хоста или IP-адрес сервера</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>в случаях:<ul>
+<li>Ошибки получения адресов сервера (getaddrinfo)</li>
+<li>Неудачного подключения ко всем доступным адресам </li>
+</ul>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="client_8cpp_source.html">client.cpp</a> строка <a class="el" href="client_8cpp_source.html#l00139">139</a></p>
+
+</div>
+</div>
+<h2 class="groupheader">Методы</h2>
+<a id="a51dce0b7cc97890009e41f07f7f5cb7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51dce0b7cc97890009e41f07f7f5cb7b">&#9670;&nbsp;</a></span>get_in_addr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void* FileClient::get_in_addr </td>
+          <td>(</td>
+          <td class="paramtype">sockaddr *&#160;</td>
+          <td class="paramname"><em>sa</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Получает указатель на IP-адрес в структуре sockaddr. </p>
+<p>Функция определяет тип адреса (IPv4/IPv6) и возвращает указатель на соответствующее поле с IP-адресом в унифицированном формате. </p><dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">sa</td><td>Указатель на структуру sockaddr (может быть sockaddr_in или sockaddr_in6) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Указатель на IP-адрес в виде:<ul>
+<li>struct in_addr* для IPv4 (AF_INET)</li>
+<li>struct in6_addr* для IPv6 (AF_INET6) </li>
+</ul>
+</dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="client_8cpp_source.html">client.cpp</a> строка <a class="el" href="client_8cpp_source.html#l00247">247</a></p>
+
+</div>
+</div>
+<a id="ac2e9090822727de157c73b2015d5ecea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2e9090822727de157c73b2015d5ecea">&#9670;&nbsp;</a></span>receive_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FileClient::receive_file </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>save_path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Принимает файл данных от сервера и сохраняет его на диск </p>
+<p>Выполняет последовательно:</p><ol type="1">
+<li>Прием данных от сервера чанками фиксированного размера (CHUNK_SIZE)</li>
+<li>Конвертацию полученных строковых данных в вектор чисел</li>
+<li>Сохранение результата в указанный файл</li>
+</ol>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">save_path</td><td>Путь для сохранения файла с полученными данными </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="client_8cpp_source.html">client.cpp</a> строка <a class="el" href="client_8cpp_source.html#l00208">208</a></p>
+
+</div>
+</div>
+<a id="a446cdd60b6f6cfd89ea26de4ed5d0288"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a446cdd60b6f6cfd89ea26de4ed5d0288">&#9670;&nbsp;</a></span>send_all()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void FileClient::send_all </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sock</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>vector</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Отправка сообщения обратно (обертка над функцией send()) </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">sock,vector</td><td>Передаем дескриптор и строку, хранящую координаты точек вершин всех прямоугольников </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="client_8cpp_source.html">client.cpp</a> строка <a class="el" href="client_8cpp_source.html#l00232">232</a></p>
+
+</div>
+</div>
+<a id="a51866dcd0f54724c77f2ac4f6a88285f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51866dcd0f54724c77f2ac4f6a88285f">&#9670;&nbsp;</a></span>send_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FileClient::send_file </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>file_path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Отправляет содержимое файла на сервер </p>
+<p>Выполняет следующие действия:</p><ol type="1">
+<li>Открывает указанный файл для чтения</li>
+<li>Читает файл построчно, объединяя строки через пробел</li>
+<li>Отправляет все данные через сокет</li>
+<li>Закрывает соединение на запись (SHUT_WR)</li>
+</ol>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">file_path</td><td>Путь к файлу для отправки</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>в случаях:<ul>
+<li>Невозможности открыть файл</li>
+<li>Ошибки чтения файла (не достигнут конец файла)</li>
+<li>Ошибки отправки данных (внутри send_all) </li>
+</ul>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="client_8cpp_source.html">client.cpp</a> строка <a class="el" href="client_8cpp_source.html#l00183">183</a></p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов класса находятся в файле:<ul>
+<li>client/<a class="el" href="client_8cpp_source.html">client.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>
