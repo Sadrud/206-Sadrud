@@ -70,29 +70,29 @@ void write_in_file (const std::string& filename, std::vector<int> vec) {
 	for (int i = 0; i < vec.size(); i++)
 		outfile << vec[i] << " "; }
 
-/*
+/*!
  * @class Socket
  * @brief Сокет
  */
 class Socket {
 	public:
-		/**
+		/*!
 		 * @brief Создание сокета
 		 * @param[in] fd Дискриптор
 		 */
 		Socket(int fd) : fd_(fd) {}
-		/**
+		/*!
 		 * @brief Удаление сокета и закрытие дискриптора
 		 */
 		~Socket() { if (fd_ != -1) close(fd_); }
 		Socket(const Socket&) = delete; ///< Запрет вызова конструктора копирования
 		Socket& operator=(const Socket&) = delete; ///< Запрет присваивания
-		/**
+		/*!
 		 * @brief 'Отключение' второго сокета и присваивание второго изначальному
 		 * @param[in] other Другой сокет
 		 */
 		Socket(Socket&& other) noexcept : fd_(other.fd_) { other.fd_ = -1; }
-		/**
+		/*!
 		 * @brief 'Отключение' второго сокета и присваивание второго изначальному
 		 * @param[in] other Другой сокет
 		 * @return Возвращает себя	
@@ -104,7 +104,7 @@ class Socket {
 			}
 			return *this;
 		}
-		/**
+		/*!
 		 * @brief Получение значения дискриптора
 		 * @return Возвращает дискриптор
 		 */
@@ -115,13 +115,13 @@ class Socket {
 		int fd_ = -1;
 };
 
-/**
+/*!
  * @class FileClient
  * @brief TCP-клиент для взаимодействия с сервером
  */
 class FileClient {
 	public:
-		/**
+		/*!
 		 * @brief Конструктор клиента для установки соединения с сервером
 		 * 
 		 * @details Выполняет следующие действия:
@@ -164,7 +164,7 @@ class FileClient {
 			}
 		}
 
-		/**
+		/*!
 		 * @brief Отправляет содержимое файла на сервер
 		 * 
 		 * @details Выполняет следующие действия:
@@ -195,7 +195,7 @@ class FileClient {
 			shutdown(sock_.get(), SHUT_WR);
 		}
 
-		/**
+		/*!
 		 * @brief Принимает файл данных от сервера и сохраняет его на диск
 		 * 
 		 * @details Выполняет последовательно:
@@ -225,7 +225,7 @@ class FileClient {
 	private:
 		Socket sock_{-1};
 
-		/**
+		/*!
 		 * @brief Отправка сообщения обратно (обертка над функцией send())
 		 * @param[in] sock, vector Передаем дескриптор и строку, хранящую координаты точек вершин всех прямоугольников
 		 */
@@ -234,7 +234,7 @@ class FileClient {
 			if (sent <= 0 || sent != vector.length()) throw std::runtime_error("Send failed");
 		}
 
-		/**
+		/*!
 		 * @brief Получает указатель на IP-адрес в структуре sockaddr
 		 *
 		 * @details Функция определяет тип адреса (IPv4/IPv6) и возвращает указатель
@@ -252,7 +252,7 @@ class FileClient {
 		}
 };
 
-/**
+/*!
  * @brief Функция, которая будет запускаться в отдельном потоке (для тестирования подключения многих клиентов)
  * @details Функция:
  * 1. Инициализирует переменные, создающие произвольные числа
@@ -303,7 +303,7 @@ void client_thread_func(const std::string& hostname, const std::string& input_pa
 	}
 }
 
-/**
+/*!
  * @brief Запуск сервера
  */
 int main(int argc, char* argv[]) {
