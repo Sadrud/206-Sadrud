@@ -24,7 +24,7 @@ const int PORT = 8080;
 const int BACKLOG = 10;
 const size_t CHUNK_SIZE = 1024*64;
 
-/**
+/*!
  * @brief Конвертация строки в вектор из double
  * @param[in] str Строка, хранящая координаты точек
  */
@@ -37,7 +37,7 @@ std::vector<int> convert_string_to_int (const std::string& str) {
 	return numbers;
 }
 
-/**
+/*!
  * @brief Конвертация чисел в string
  * @param[in] vec Набор чисел
  */
@@ -51,33 +51,33 @@ std::string convert_int_to_string (const std::vector<int>& vec) {
 	return result;
 }
 
-/**
+/*!
  * @class Socket
  * @brief Сокет
  */
 class Socket {
 	public:
-		/**
+		/*!
 		 * @brief Создание сокета
 		 * @param[in] fd Дискриптор
 		 */
 		Socket(int fd) : fd_(fd) {}
-		/**
+		/*!
 		 * @brief Удаление сокета и закрытие дискриптора
 		 */
 		~Socket() { if (fd_ != -1) close(fd_); } 
 		Socket(const Socket&) = delete; ///< Запрет вызова конструктора копирования
-		/**
+		/*!
 		 * @brief Запрет присваивания
 		 * @return Ничего
 		 */
 		Socket& operator=(const Socket&) = delete;
-		/**
+		/*!
 		 * @brief 'Отключение' второго сокета и присваивание второго изначальному
 		 * @param[in] other Другой сокет
 		 */
 		Socket(Socket&& other) noexcept : fd_(other.fd_) { other.fd_ = -1; }
-		/**
+		/*!
 		 * @brief 'Отключение' второго сокета и присваивание второго изначальному
 		 * @param[in] other Другой сокет
 		 * @return Возвращает себя	
@@ -89,7 +89,7 @@ class Socket {
 			}
 			return *this;
 		}
-		/**
+		/*!
 		 * @brief Получение значения дискриптора
 		 * @return Возвращает дискриптор
 		 */
@@ -100,7 +100,7 @@ class Socket {
 		int fd_ = -1;///< Дескриптор
 };
 
-/**
+/*!
  * @class FileServer
  * @brief TCP-сервер для обработки прямоугольников
  */
@@ -112,7 +112,7 @@ class FileServer {
 			create_socket();
 		}
 
-		/**
+		/*!
 		 *@brief Основной цикл работы сервера
 		 * 
 		 * @details Выполняет следующие действия в бесконечном цикле:
@@ -153,7 +153,7 @@ class FileServer {
 	private:
 		Socket sock_{-1};///< Создание сокета
 
-		/**
+		/*!
 		 * @brief Настраивает обработчик сигнала SIGCHLD для автоматического завершения дочерних процессов.
 		 * 
 		 * @details Функция выполняет следующие действия:
@@ -172,7 +172,7 @@ class FileServer {
 			}
 		}
 
-		/**
+		/*!
 		 * @brief Создает и настраивает серверный сокет для принятия подключений
 		 * 
 		 * @details Выполняет последовательно:
@@ -232,7 +232,7 @@ class FileServer {
 			std::cout << "Server listening on port " << PORT << std::endl;
 		}
 
-		/**
+		/*!
 		 * @brief Получает указатель на IP-адрес в структуре sockaddr
 		 *
 		 * @details Функция определяет тип адреса (IPv4/IPv6) и возвращает указатель
@@ -249,7 +249,7 @@ class FileServer {
 			return &(reinterpret_cast<sockaddr_in6*>(sa)->sin6_addr);
 		}
 
-		/**
+		/*!
 		 * @brief 
 		 * @details Выполняется следующее:
 		 * 1. Передается вектор значений
@@ -279,7 +279,7 @@ class FileServer {
 			return result;
 		}
 
-		/**
+		/*!
 		 * @brief Обрабатывает соединение с клиентом
 		 * 
 		 * @details Функция выполняет:
@@ -315,7 +315,7 @@ class FileServer {
 			}
 		}
 
-		/**
+		/*!
 		 * @brief Отправка сообщения обратно (обертка над функцией send())
 		 * @param[in] sock, data Передаем дескриптор и строку, хранящую координаты точек вершин всех прямоугольников
 		 */
@@ -326,7 +326,7 @@ class FileServer {
 
 };
 
-/**
+/*!
  * @brief Запуск сервера
  */
 int main() {
