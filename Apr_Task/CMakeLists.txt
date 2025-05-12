@@ -12,6 +12,8 @@ set(CLIENT
 	tests/
 	)
 
+set (CMAKE_CXX_FLAGS "-lpthread ${CMAKE_CXX_FLAGS}")
+
 #add_custom_target(clean_inputs
 #	COMMAND ${CMAKE_COMMAND} -E remove_directory "${CMAKE_SOURCE_DIR}/build/input"
 #	COMMAND ${CMAKE_COMMAND} -E remove_directory "${CMAKE_SOURCE_DIR}/build/output"

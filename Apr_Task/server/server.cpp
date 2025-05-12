@@ -3,6 +3,16 @@
  * @brief Основной модуль TCP-сервера для обработки геометрических данных
  */
 
+static double epsilon = 1e-20;
+template <typename T>
+static double abs (T x, T y) {
+        if (x > y)
+                return x-y;
+        return y-x;
+}
+
+
+
 #include <iostream>
 #include <algorithm>
 #include <memory>
@@ -263,7 +273,7 @@ class FileServer {
 		 */
 		static std::vector<int> process_data(std::vector<int>& data) {
 			double intpart = std::sqrt(data.size());
-			if (intpart != std::floor(intpart)) throw std::runtime_error("Not enough elements: " + std::to_string(data.size()));
+			if (abs (intpart, std::floor(intpart)) <= epsilon) throw std::runtime_error("Not enough elements: " + std::to_string(data.size()));
 
 			std::vector<int> result;
 			std::vector<std::vector<int>> data_matrix (static_cast<int>(intpart), std::vector<int>(static_cast<int>(intpart)));

@@ -67,7 +67,7 @@ void write_in_file (const std::string& filename, std::vector<int> vec) {
 	std::ofstream outfile(filename);
 	if (!outfile) throw std::runtime_error("Cannot create output file");
 
-	for (int i = 0; i < vec.size(); i++)
+	for (size_t i = 0; i < vec.size(); i++)
 		outfile << vec[i] << " "; }
 
 /*!
@@ -230,7 +230,7 @@ class FileClient {
 		 * @param[in] sock, vector Передаем дескриптор и строку, хранящую координаты точек вершин всех прямоугольников
 		 */
 		static void send_all(int sock, std::string vector){
-			ssize_t sent = send(sock, vector.c_str(), vector.length(), 0);
+			size_t sent = send(sock, vector.c_str(), vector.length(), 0);
 			if (sent <= 0 || sent != vector.length()) throw std::runtime_error("Send failed");
 		}
 
