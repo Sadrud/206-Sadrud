@@ -46,6 +46,8 @@ std::string convert_int_to_string(const std::vector<int> &vec) {
 }
 
 std::vector<int> process_data(std::vector<int> &data) {
+	if (data.empty()) throw std::runtime_error("Received empty data");
+
 	double intpart = std::sqrt(data.size());
 	if (std::abs(intpart - std::floor(intpart)) > epsilon)
 		throw std::runtime_error("Data size is not a square: " + std::to_string(data.size()));
@@ -70,20 +72,19 @@ void handle_connection(int client_fd) {
 	while (true) {
 		ssize_t bytes_received = recv(client_fd, buffer, CHUNK_SIZE - 1, 0);
 		if (bytes_received <= 0) break;
-		buffer[bytes_received] = 0;
+		buffer[bytes_received] = '\0';
 		received_data += std::string(buffer);
 	}
 
-	auto data = convert_string_to_int(received_data);
-	if (!data.empty()) {
-		try {
-			auto result = process_data(data);
-			auto response = convert_int_to_string(result);
-			send_all(client_fd, response);
-		} catch (const std::exception &e) {
-			std::cerr << "Processing error: " << e.what() << std::endl;
-		}
+	try {
+		auto data = convert_string_to_int(received_data);
+		auto result = process_data(data);
+		auto response = convert_int_to_string(result);
+		send_all(client_fd, response);
+	} catch (const std::exception &e) {
+		std::cerr << "Error in client handler: " << e.what() << std::endl;
 	}
+
 	close(client_fd);
 }
 
@@ -147,6 +148,8 @@ int main() {
 				client_queue.pop();
 			}
 
+			if (client_fd == -1) continue;
+
 			try {
 				handle_connection(client_fd);
 			} catch (const std::exception &e) {
@@ -159,3 +162,4 @@ int main() {
 	close(server_fd);
 	return 0;
 }
+
