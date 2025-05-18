@@ -273,7 +273,7 @@ class FileServer {
 		 */
 		static std::vector<int> process_data(std::vector<int>& data) {
 			double intpart = std::sqrt(data.size());
-			if (abs (intpart, std::floor(intpart)) <= epsilon) throw std::runtime_error("Not enough elements: " + std::to_string(data.size()));
+			if (abs (intpart, std::floor(intpart)) > epsilon) throw std::runtime_error("Not enough elements: " + std::to_string(data.size()));
 
 			std::vector<int> result;
 			std::vector<std::vector<int>> data_matrix (static_cast<int>(intpart), std::vector<int>(static_cast<int>(intpart)));
@@ -317,11 +317,15 @@ class FileServer {
 			}
 
 			received_data_int = convert_string_to_int(received_data_string);
-			
+
 			if (!received_data_int.empty()) {
 				received_data_process = process_data(received_data_int);
 				received_data = convert_int_to_string(received_data_process);
-				send_all(client_socket.get(), received_data);
+				try {
+					send_all(client_socket.get(), received_data);
+				} catch (const std::exception& e) {
+					std::cerr << "Error: " << e.what() << std::endl;	
+				}
 			}
 		}
 
