@@ -1,4 +1,0 @@
-<map id="FileServer" name="FileServer">
-<area shape="rect" id="node1" title="TCP&#45;сервер для обработки прямоугольников" alt="" coords="5,95,92,121"/>
-<area shape="rect" id="node2" href="$classSocket.html" title="Сокет" alt="" coords="16,5,81,32"/>
-</map>

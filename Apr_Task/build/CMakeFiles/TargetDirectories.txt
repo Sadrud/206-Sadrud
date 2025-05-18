@@ -1,5 +1,0 @@
-/users/2/206/Akhmedov_SA/206-Sadrud/Apr_Task/build/CMakeFiles/rebuild_cache.dir
-/users/2/206/Akhmedov_SA/206-Sadrud/Apr_Task/build/CMakeFiles/edit_cache.dir
-/users/2/206/Akhmedov_SA/206-Sadrud/Apr_Task/build/CMakeFiles/client.dir
-/users/2/206/Akhmedov_SA/206-Sadrud/Apr_Task/build/CMakeFiles/clean_all.dir
-/users/2/206/Akhmedov_SA/206-Sadrud/Apr_Task/build/CMakeFiles/server.dir

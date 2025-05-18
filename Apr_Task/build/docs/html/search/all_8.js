@@ -1,9 +1,0 @@
-var searchData=
-[
-  ['send_5fall_24',['send_all',['../classFileServer.html#ad8e80e035edf7bf2db4d6d1f17945754',1,'FileServer::send_all()'],['../classFileClient.html#a446cdd60b6f6cfd89ea26de4ed5d0288',1,'FileClient::send_all(int sock, std::string vector)']]],
-  ['send_5ffile_25',['send_file',['../classFileClient.html#a51866dcd0f54724c77f2ac4f6a88285f',1,'FileClient']]],
-  ['server_2ecpp_26',['server.cpp',['../server_8cpp.html',1,'']]],
-  ['setup_5fsignal_5fhandler_27',['setup_signal_handler',['../classFileServer.html#a0d7db94979a553f4daaa40b47bcb0acf',1,'FileServer']]],
-  ['sock_5f_28',['sock_',['../classFileServer.html#a52167bc1ed2c849f81ce61e44c065128',1,'FileServer']]],
-  ['socket_29',['Socket',['../classSocket.html',1,'Socket'],['../classSocket.html#a5390f8264f7872c9a8e695e01184e929',1,'Socket::Socket(int fd)'],['../classSocket.html#aae1f09b930bb7118172baa0abb15543e',1,'Socket::Socket(const Socket &amp;)=delete'],['../classSocket.html#ac017ad98aff83e36a53939c5b90ea598',1,'Socket::Socket(Socket &amp;&amp;other) noexcept'],['../classSocket.html#a5390f8264f7872c9a8e695e01184e929',1,'Socket::Socket(int fd)'],['../classSocket.html#aae1f09b930bb7118172baa0abb15543e',1,'Socket::Socket(const Socket &amp;)=delete'],['../classSocket.html#ac017ad98aff83e36a53939c5b90ea598',1,'Socket::Socket(Socket &amp;&amp;other) noexcept']]]
-];
