@@ -23,11 +23,41 @@
 #include "../tests/tests.cpp"
 #include <chrono>
 #include <thread>
+#include <mutex>
+
+
+static double epsilon = 1e-20;
+template <typename T>
+static double abs (T x, T y) {
+	if (x > y)
+		return x-y;
+	return y-x;
+}
+
 
 const int PORT = 8080;
 const size_t CHUNK_SIZE = 65536;
 
 namespace fs = std::filesystem;
+
+template <typename T>
+bool checkIsRight (std::vector<T>& a, std::vector<T>& b) {
+	std::lock_guard<std::mutex> lock(cout_mutex);
+	if (a.size() != b.size()) {
+		std::cout << "[---FAIL---] SIZE: " << "a - " << a.size() << ",  " << "b - " << b.size() << std::endl;
+		return false;
+	}
+
+	for (int i = 0; i < a.size(); i++) {
+		if (abs(a[i], b[i]) > epsilon) {
+			std::cout << "[---FAIL---] DATA" << std::endl;
+			return false;
+		}
+	}
+	std::cout << "[--- OK ---]" << std::endl;
+	return true;
+}
+
 
 /*!
  * @brief Обход всех файлов в папке
@@ -70,50 +100,50 @@ void write_in_file (const std::string& filename, std::vector<int> vec) {
 	for (size_t i = 0; i < vec.size(); i++)
 		outfile << vec[i] << " "; }
 
-/*!
- * @class Socket
- * @brief Сокет
- */
-class Socket {
-	public:
 		/*!
-		 * @brief Создание сокета
-		 * @param[in] fd Дискриптор
+		 * @class Socket
+		 * @brief Сокет
 		 */
-		Socket(int fd) : fd_(fd) {}
-		/*!
-		 * @brief Удаление сокета и закрытие дискриптора
-		 */
-		~Socket() { if (fd_ != -1) close(fd_); }
-		Socket(const Socket&) = delete; ///< Запрет вызова конструктора копирования
-		Socket& operator=(const Socket&) = delete; ///< Запрет присваивания
-		/*!
-		 * @brief 'Отключение' второго сокета и присваивание второго изначальному
-		 * @param[in] other Другой сокет
-		 */
-		Socket(Socket&& other) noexcept : fd_(other.fd_) { other.fd_ = -1; }
-		/*!
-		 * @brief 'Отключение' второго сокета и присваивание второго изначальному
-		 * @param[in] other Другой сокет
-		 * @return Возвращает себя	
-		 */
-		Socket& operator=(Socket&& other) noexcept {
-			if (this != &other) {
-				fd_ = other.fd_;
-				other.fd_ = -1;
-			}
-			return *this;
-		}
-		/*!
-		 * @brief Получение значения дискриптора
-		 * @return Возвращает дискриптор
-		 */
-		int get() const { return fd_; }
-		void reset() { if (fd_ != -1) close(fd_); fd_ = -1; } ///< 'Отключение' сокета, если дискриптор равен -1
+		class Socket {
+			public:
+				/*!
+				 * @brief Создание сокета
+				 * @param[in] fd Дискриптор
+				 */
+				Socket(int fd) : fd_(fd) {}
+				/*!
+				 * @brief Удаление сокета и закрытие дискриптора
+				 */
+				~Socket() { if (fd_ != -1) close(fd_); }
+				Socket(const Socket&) = delete; ///< Запрет вызова конструктора копирования
+				Socket& operator=(const Socket&) = delete; ///< Запрет присваивания
+				/*!
+				 * @brief 'Отключение' второго сокета и присваивание второго изначальному
+				 * @param[in] other Другой сокет
+				 */
+				Socket(Socket&& other) noexcept : fd_(other.fd_) { other.fd_ = -1; }
+				/*!
+				 * @brief 'Отключение' второго сокета и присваивание второго изначальному
+				 * @param[in] other Другой сокет
+				 * @return Возвращает себя	
+				 */
+				Socket& operator=(Socket&& other) noexcept {
+					if (this != &other) {
+						fd_ = other.fd_;
+						other.fd_ = -1;
+					}
+					return *this;
+				}
+				/*!
+				 * @brief Получение значения дискриптора
+				 * @return Возвращает дискриптор
+				 */
+				int get() const { return fd_; }
+				void reset() { if (fd_ != -1) close(fd_); fd_ = -1; } ///< 'Отключение' сокета, если дискриптор равен -1
 
-	private:
-		int fd_ = -1;
-};
+			private:
+				int fd_ = -1;
+		};
 
 /*!
  * @class FileClient
@@ -190,7 +220,7 @@ class FileClient {
 
 			if (!file.eof()) throw std::runtime_error("Ошибка чтения файла");
 			send_all(sock_.get(), buffer);
-			std::cout << file_path << std::endl;
+			//std::cout << file_path << std::endl;
 
 			shutdown(sock_.get(), SHUT_WR);
 		}
@@ -205,7 +235,7 @@ class FileClient {
 		 * 
 		 * @param[in] save_path Путь для сохранения файла с полученными данными
 		 */
-		void receive_file(const std::string& save_path) {
+		void receive_file(const std::string& save_path, std::vector<int>& rightAnswer) {
 			char buffer[CHUNK_SIZE];
 			std::string data;
 			std::vector<int> result;
@@ -219,6 +249,7 @@ class FileClient {
 			}
 
 			result = convert_string_to_int(data);
+			checkIsRight(result, rightAnswer);
 			write_in_file (save_path, result);
 		}
 
@@ -267,35 +298,36 @@ void client_thread_func(const std::string& hostname, const std::string& input_pa
 	try {
 		std::random_device rd1;
 		std::mt19937 gen1(rd1());
-		std::uniform_int_distribution<int> dist1(1,10);
+		std::uniform_int_distribution<int> dist1(1000,10000);
 
 		std::random_device rd2;
 		std::mt19937 gen2(rd2());
-		std::uniform_int_distribution<int> dist2(2, 8);
 
 		std::random_device rd3;
 		std::mt19937 gen3(rd3());
-		std::uniform_real_distribution<double> dist3(0.1,0.7);
 
-		GraphTests::randomTest(input_path, dist1(gen1), dist2(gen1), dist3(gen1));
-		GraphTests::randomTest(input_path, dist1(gen2), dist2(gen2), dist3(gen2));
-		GraphTests::randomTest(input_path, dist1(gen3), dist2(gen3), dist3(gen3));
-	} catch (const std::exception& e) {
-		std::cerr << "Error: " << e.what() << std::endl;
-	}
+		std::vector<std::vector<int>> g1 = GraphTests::randomTest(input_path, dist1(gen1), false);
+		std::vector<std::vector<int>> g2 = GraphTests::randomTest(input_path, dist1(gen2), true);
+		std::vector<std::vector<int>> g3 = GraphTests::randomTest(input_path, dist1(gen3), true);
 
-
-	try {
 #ifdef _WIN32
 		mkdir(output_path.c_str());
 #else
 		mkdir(output_path.c_str(), 0777);
 #endif
 		auto files = get_files_in_directory(input_path);
-		for (const auto& file : files) {
+
+		std::vector<std::vector<int>> rightAnswer;
+		rightAnswer.push_back(FindEulerPath (g1.size(), g1));
+		rightAnswer.push_back(FindEulerPath (g2.size(), g2));
+		rightAnswer.push_back(FindEulerPath (g3.size(), g3));
+		//std::vector<int> rightAnswer2 = FindEulerPath_parallel (static_cast<int>(intpart), g2);
+		//std::vector<int> rightAnswer3 = FindEulerPath_parallel (static_cast<int>(intpart), g3);
+
+		for (int i = 0; i < 3; i++) {
 			FileClient client(hostname);
-			client.send_file(input_path + '/' + static_cast<std::string>(file.filename()));
-			client.receive_file(output_path + '/' + static_cast<std::string>(file.filename()));
+			client.send_file(input_path + '/' + static_cast<std::string>(files[i].filename()));
+			client.receive_file(output_path + '/' + static_cast<std::string>(files[i].filename()), rightAnswer[i]);
 		}
 		std::cout << "File transfer completed successfully\n";
 	} catch (const std::exception& e) {
@@ -307,18 +339,18 @@ void client_thread_func(const std::string& hostname, const std::string& input_pa
  * @brief Запуск сервера
  */
 int main(int argc, char* argv[]) {
-	if (argc != 3) {
+	if (argc != 2) {
 		std::cerr << "Usage: " << argv[0] << " <hostname>, <quantity of clients>\n";
 		return 1;
 	}
 
-	int num_clients = std::atoi(argv[2]);
+	int num_clients = std::atoi(argv[1]);
 	std::vector<std::thread> client_threads;
 
 	std::string a = "input";
 	std::string b = "output";
 	for (int i = 0; i < num_clients; ++i) {
-		client_threads.emplace_back(client_thread_func, argv[1], a + std::to_string(i+1), b + std::to_string(i+1));
+		client_threads.emplace_back(client_thread_func, "127.0.0.1", a + std::to_string(i+1), b + std::to_string(i+1));
 	}
 	for (auto& thread : client_threads) {
 		thread.join();
