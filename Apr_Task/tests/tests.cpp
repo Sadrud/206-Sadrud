@@ -15,14 +15,14 @@
 */
 
 namespace GraphTests {
-	void randomTest (std::string folder, int vertices, int maxEdges, float density) {
-		std::vector<std::vector<int>> g = generateAdjacencyMatrix(vertices, density, maxEdges);
+	std::vector<std::vector<int>> randomTest (std::string folder, int vertices, bool hasPath) {
+		std::vector<std::vector<int>> g = generateAdjacencyMatrix(vertices, hasPath);
 
 		std::string filename = 
 			"The adjacency matrix of the graph: vertices - " + std::to_string(vertices) 
-			+ ", edge density - " + std::to_string(density) 
-			+ ", max count of edges - " + std::to_string(maxEdges);
+			+ ", path or cycle - " + (hasPath ? "Cycle" : "Path");
 
 		printMatrix (folder, filename, g);
+		return g;
 	}
 }

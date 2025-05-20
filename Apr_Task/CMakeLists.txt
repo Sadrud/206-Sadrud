@@ -4,8 +4,8 @@ project(MyProject)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(SERVER 
-	server/server_parallel.cpp
+set(SERVER
+	server/server.cpp
 	)
 set(CLIENT
 	client/client.cpp
@@ -25,7 +25,7 @@ include_directories (methods)
 add_executable(server ${SERVER})
 add_executable(client ${CLIENT})
 
-add_custom_target(clean_all
+add_custom_target(d
 	COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_BINARY_DIR}/*
 	COMMENT "Очистка папки Build"
 	)

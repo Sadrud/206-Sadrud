@@ -276,6 +276,7 @@ class FileServer {
 			if (abs (intpart, std::floor(intpart)) > epsilon) throw std::runtime_error("Not enough elements: " + std::to_string(data.size()));
 
 			std::vector<int> result;
+			std::vector<int> result_parallel;
 			std::vector<std::vector<int>> data_matrix (static_cast<int>(intpart), std::vector<int>(static_cast<int>(intpart)));
 			for (int i = 0; i < intpart; i++) {
 				for (int j = 0; j < intpart; j++)
@@ -284,6 +285,12 @@ class FileServer {
 
 			try {
 				result = FindEulerPath (static_cast<int>(intpart), data_matrix);
+				result_parallel = FindEulerPath_parallel (static_cast<int>(intpart), data_matrix);
+
+				for (int i = 0; i < result.size(); i++) {
+					if (abs(result[i], result_parallel[i]) > epsilon) { std::cout << "[---FAIL---]" << std::endl; return result; }
+				}
+				std::cout << "[--- OK ---]" << std::endl;
 			} catch (const std::exception& e) { std::cout << "Error: " << e.what() << std::endl; }
 
 			return result;
